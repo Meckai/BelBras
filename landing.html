@@ -14,12 +14,6 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' font-family='serif'>✨</text></svg>">
 
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      background: #0a0a0a;
-    }
-
     .landing-hero {
       position: relative;
       height: 100vh;
@@ -62,15 +56,6 @@
     .landing-text {
       opacity: 0;
       animation: fadeInUp 0.8s ease-out forwards;
-    }
-
-    .landing-eyebrow {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: #c8a96e;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
     }
 
     .landing-title {
@@ -171,9 +156,9 @@
     const landingVideo = document.getElementById('landing-video');
 
     const textPieces = [
-      { type: 'eyebrow', text: 'Studio de Beleza Brasil by Madson Soares' },
+      { type: 'title', text: 'Studio de Beleza Brasil by Madson Soares' },
       { type: 'subtitle', text: 'Pioneirismo e Referência em Beleza em Belém' },
-      { type: 'title', text: 'A Referência Absoluta em Beleza e Estética em Belém' },
+      { type: 'large-title', text: 'A Referência Absoluta em Beleza e Estética em Belém' },
       { type: 'subtitle', text: 'Uma década não se conta em anos… se prova em resultados, autoridade e transformação real.<br><br>Madson Soares não construiu apenas um studio. Construiu um padrão. Um padrão onde estética não é vaidade — é posicionamento. Onde cada detalhe foi pensado para entregar sofisticação, segurança e impacto visual.<br><br><strong>Pioneiros em Bronzeamento Masculino</strong> • <strong>Especialistas em Estética Avançada</strong> • <strong>Padrão Internacional de Qualidade</strong>' },
       { type: 'button', text: 'Conhecer nossos Serviços' }
     ];
@@ -191,13 +176,14 @@
         setTimeout(() => {
           let element;
 
-          if (piece.type === 'eyebrow') {
-            element = document.createElement('span');
-            element.className = 'landing-text landing-eyebrow';
-            element.innerHTML = piece.text;
-          } else if (piece.type === 'title') {
+          if (piece.type === 'title') {
             element = document.createElement('h1');
             element.className = 'landing-text landing-title';
+            element.innerHTML = piece.text;
+          } else if (piece.type === 'large-title') {
+            element = document.createElement('h2');
+            element.className = 'landing-text landing-title';
+            element.style.fontSize = '2.5rem';
             element.innerHTML = piece.text;
           } else if (piece.type === 'subtitle') {
             element = document.createElement('p');
