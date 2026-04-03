@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Renan Melo Tattoo — Fine Line, Aquarelado, Pontilhismo, Glitter e Blackwork em Belém, PA. Ambiente profissional, atendimento com hora marcada.">
+  <title>Renan Melo Tattoo | Estúdio Profissional em Belém</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75'></text></svg>">
+
+  <style>
+    :root {
+      --black: #050505;
+      --dark: #0a0a0a;
+      --charcoal: #111111;
+      --offwhite: #f5f2ed;
+      --gold: #c8a882;
+      --gold-light: #e0cca7;
+      --gold-metallic: linear-gradient(135deg, #c8a882 0%, #e0cca7 50%, #c8a882 100%);
+      --text-muted: rgba(245,242,237,0.45);
+      --serif: 'Cinzel Decorative', cursive;
+      --mono: 'Montserrat', sans-serif;
+      --sans: 'Montserrat', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body { font-family: var(--sans); background: var(--black); color: var(--offwhite); overflow-x: hidden; line-height: 1.8; }
+
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+    /* ── BACK LINK ── */
+    .back-bar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      background: rgba(5,5,5,0.75); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(200,168,130,0.1);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px; height: 60px;
+      transition: all 0.4s ease;
+    }
+    .back-bar.scrolled { height: 54px; background: rgba(5,5,5,0.9); }
+    .back-link {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--text-muted); text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--gold); }
+    .back-link svg { width: 14px; height: 14px; opacity: 0.7; }
+    .back-brand {
+      font-family: var(--serif); font-size: 1rem; font-weight: 400;
+      color: var(--gold); letter-spacing: 0.1em;
+      opacity: 0.9;
+    }
+    .back-cta {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--black);
+      background: var(--gold-metallic); border: none; padding: 8px 18px;
+      text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .back-cta:hover { background: var(--gold-light); transform: translateY(-1px) scale(1.05); }
+    @media (max-width: 768px) {
+      .back-bar { padding: 0 24px; }
+      .back-brand { display: none; }
+    }
+
+    /* ── HERO ── */
+    .tt-hero {
+      position: relative; height: 100vh; min-height: 600px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; background: var(--black);
+    }
+    .tt-hero-video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0; transition: opacity 3s ease;
+    }
+    .tt-hero-video.loaded { opacity: 0.3; }
+    .tt-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(8,8,8,0.6) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.85) 100%);
+    }
+    .tt-hero-placeholder {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, #1a1010 0%, #080808 70%);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .tt-hero-placeholder svg { width: 80px; height: 80px; opacity: 0.08; }
+    .tt-hero-content {
+      position: relative; z-index: 2; text-align: center;
+      padding: 40px; max-width: 900px;
+    }
+    .tt-eyebrow {
+      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.45em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 28px; opacity: 0;
+      animation: fadeUp 1s ease 0.3s forwards;
+    }
+    .tt-title {
+      font-family: var(--serif); font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 300; line-height: 1.0; color: var(--offwhite);
+      margin-bottom: 20px; opacity: 0;
+      letter-spacing: 0.05em;
+      animation: fadeUp 1s ease 0.6s forwards;
+    }
+    .tt-title em { font-style: italic; color: var(--gold); }
+    .tt-styles {
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: var(--text-muted);
+      margin-bottom: 48px; opacity: 0;
+      animation: fadeUp 1s ease 0.9s forwards;
+    }
+    .tt-hero-cta {
+      display: inline-block; padding: 16px 44px; border: 1px solid var(--gold);
+      color: var(--offwhite); font-family: var(--mono); font-size: 0.65rem;
+      letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none;
+      transition: all 0.4s ease; opacity: 0;
+      animation: fadeUp 1s ease 1.2s forwards;
+    }
+    .tt-hero-cta:hover { background: var(--gold); color: var(--black); }
+    .tt-seals {
+      display: flex; justify-content: center; gap: 32px;
+      margin-top: 48px; flex-wrap: wrap; opacity: 0;
+      animation: fadeUp 1s ease 1.5s forwards;
+    }
+    .tt-seal {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-muted);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .tt-seal::before {
+      content: '—'; color: var(--gold); font-size: 0.8rem;
+    }
+
+    /* ── PORTFOLIO ── */
+    .tt-section { padding: 120px 60px; }
+    .tt-section-dark { background: var(--dark); }
+    .tt-section-header { text-align: center; margin-bottom: 20px; }
+    .tt-label {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.45em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+      display: block; opacity: 0.85;
+    }
+    .tt-heading {
+      font-family: var(--serif); font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300; color: var(--offwhite); margin-bottom: 16px;
+      letter-spacing: 0.03em;
+    }
+    .tt-heading em { font-style: italic; color: var(--gold); }
+    .tt-microcopy {
+      font-family: var(--sans); font-size: 0.95rem; font-weight: 300;
+      color: var(--text-muted); max-width: 600px; margin: 0 auto 56px;
+      line-height: 1.8;
+    }
+    .tt-filters {
+      display: flex; justify-content: center; gap: 8px;
+      flex-wrap: wrap; margin-bottom: 48px;
+    }
+    .tt-filter-btn {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-muted);
+      border: 1px solid rgba(240,236,228,0.15); background: transparent;
+      padding: 8px 18px; cursor: pointer; transition: all 0.3s;
+    }
+    .tt-filter-btn:hover, .tt-filter-btn.active {
+      border-color: var(--gold); color: var(--gold);
+      background: rgba(200,168,130,0.06);
+    }
+    .tt-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 12px; max-width: 1100px; margin: 0 auto 80px;
+    }
+    .tt-card {
+      aspect-ratio: 1; position: relative; overflow: hidden;
+      background: var(--charcoal); cursor: pointer;
+      transition: transform 0.4s ease;
+    }
+    .tt-card:hover { transform: scale(1.02); }
+    .tt-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .tt-card:hover img { transform: scale(1.08); }
+    .tt-card-overlay {
+      position: absolute; inset: 0;
+      background: rgba(200,168,130,0.0);
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.4s ease;
+    }
+    .tt-card:hover .tt-card-overlay { background: rgba(200,168,130,0.2); }
+    .tt-card-overlay svg {
+      width: 36px; height: 36px; color: var(--offwhite);
+      opacity: 0; transform: scale(0.8); transition: all 0.3s ease 0.1s;
+    }
+    .tt-card:hover .tt-card-overlay svg { opacity: 1; transform: scale(1); }
+    .tt-card-style {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--offwhite);
+      position: absolute; bottom: 14px; left: 14px;
+      background: rgba(8,8,8,0.85); padding: 5px 10px;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .tt-card:hover .tt-card-style { opacity: 1; }
+
+    /* ── MARQUEE LOOP ── */
+    .tt-marquee {
+      width: 100%; overflow: hidden; position: relative;
+      background: var(--black); padding: 60px 0;
+      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+    }
+    .tt-marquee-track {
+      display: flex; width: max-content;
+      animation: marquee 60s linear infinite;
+    }
+    .tt-marquee-track:hover { animation-play-state: paused; }
+    .tt-marquee-item {
+      width: 320px; aspect-ratio: 1; margin: 0 6px;
+      flex-shrink: 0; position: relative; overflow: hidden;
+      cursor: pointer;
+    }
+    .tt-marquee-item img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .tt-marquee-item:hover img { transform: scale(1.1); }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+
+
+
+
+    /* Lightbox */
+    .tt-lightbox {
+      position: fixed; inset: 0; background: rgba(8,8,8,0.97);
+      z-index: 9999; display: none; align-items: center; justify-content: center;
+    }
+    .tt-lightbox.open { display: flex; }
+    .tt-lightbox-img {
+      max-width: 85vw; max-height: 85vh; object-fit: contain;
+    }
+    .tt-lightbox-close {
+      position: absolute; top: 30px; right: 40px;
+      font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.2em;
+      color: var(--text-muted); background: none; border: none; cursor: pointer;
+      text-transform: uppercase; transition: color 0.3s;
+    }
+    .tt-lightbox-close:hover { color: var(--gold); }
+
+    .tt-anchor-cta:hover { opacity: 0.7; }
+
+
+
+    /* ── HOW IT WORKS ── */
+    .tt-steps {
+      display: flex; gap: 0; max-width: 1000px;
+      margin: 0 auto 80px; position: relative;
+    }
+    .tt-steps::before {
+      content: ''; position: absolute; top: 28px; left: 0; right: 0;
+      height: 1px; background: rgba(200,168,130,0.2);
+    }
+    .tt-step {
+      flex: 1; text-align: center; padding: 0 20px; position: relative;
+    }
+    .tt-step-num {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.2em;
+      color: var(--black); background: var(--gold-metallic);
+      width: 56px; height: 56px; display: flex;
+      align-items: center; justify-content: center;
+      margin: 0 auto 20px; font-weight: 700;
+    }
+    .tt-step-title {
+      font-family: var(--serif); font-size: 1.2rem; font-weight: 400;
+      color: var(--offwhite); margin-bottom: 8px;
+    }
+    .tt-step-desc {
+      font-family: var(--sans); font-size: 0.8rem; font-weight: 300;
+      color: var(--text-muted); line-height: 1.6;
+    }
+    .tt-transition-text {
+      font-family: var(--serif); font-size: 1.4rem; font-style: italic;
+      font-weight: 300; text-align: center; color: var(--offwhite);
+      margin-bottom: 56px; max-width: 600px; margin-left: auto; margin-right: auto;
+    }
+    .tt-transition-text span { color: var(--gold); }
+
+    /* ── FORM ── */
+    .tt-form {
+      max-width: 800px; margin: 0 auto;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 60px; backdrop-filter: blur(10px);
+    }
+    .tt-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
+    .tt-form-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
+    .tt-form-group label {
+      font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold); font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .tt-form-group input,
+    .tt-form-group textarea,
+    .tt-form-group select {
+      background: rgba(255,255,255,0.03); border: none;
+      border-bottom: 1px solid rgba(200,168,130,0.2);
+      color: var(--offwhite); font-family: var(--sans); font-size: 0.95rem;
+      padding: 12px 0; outline: none; transition: all 0.4s ease;
+      -webkit-appearance: none; appearance: none; border-radius: 0;
+    }
+    .tt-form-group input:focus,
+    .tt-form-group textarea:focus,
+    .tt-form-group select:focus {
+      border-bottom-color: var(--gold);
+      background: rgba(255,255,255,0.05);
+      padding-left: 10px;
+    }
+    .tt-form-group textarea { min-height: 100px; resize: vertical; }
+    .tt-submit {
+      width: 100%; padding: 20px; background: var(--gold-metallic);
+      color: var(--black); border: none; font-family: var(--mono);
+      font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+      cursor: pointer; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-bottom: 32px; font-weight: 700;
+    }
+    .tt-submit:hover {
+      background: var(--gold-light);
+      letter-spacing: 0.4em;
+    }
+    .tt-guarantees {
+      display: flex; gap: 24px;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .tt-guarantee {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--text-muted);
+      display: flex; align-items: center; gap: 8px;
+    }
+    .tt-guarantee span { color: var(--gold); }
+
+    /* ── CTA FINAL ── */
+    .tt-cta-section {
+      position: relative; padding: 160px 60px;
+      text-align: center; overflow: hidden;
+      background: var(--dark);
+    }
+    .tt-cta-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at center, #1a0f0f 0%, #080808 70%);
+    }
+    .tt-cta-grid {
+      position: absolute; inset: 0; opacity: 0.04;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 50px, rgba(200,168,130,1) 50px, rgba(200,168,130,1) 51px),
+        repeating-linear-gradient(90deg, transparent, transparent 50px, rgba(200,168,130,1) 50px, rgba(200,168,130,1) 51px);
+    }
+    .tt-cta-content { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+    .tt-cta-text {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 300; line-height: 1.2; color: var(--offwhite);
+      margin-bottom: 48px;
+    }
+    .tt-cta-text em { display: block; font-style: italic; color: var(--gold); margin-top: 8px; }
+    .tt-cta-btn {
+      display: inline-block; padding: 18px 52px;
+      border: 1px solid var(--gold); color: var(--offwhite);
+      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase; text-decoration: none;
+      transition: all 0.4s ease; margin-bottom: 56px;
+    }
+    .tt-cta-btn:hover { background: var(--gold); color: var(--black); }
+    .tt-social {
+      display: flex; justify-content: center; gap: 32px;
+      margin-bottom: 32px;
+    }
+    .tt-social-link {
+      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--text-muted); text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      transition: color 0.3s;
+    }
+    .tt-social-link:hover { color: var(--gold); }
+    .tt-social-link svg { width: 18px; height: 18px; }
+    .tt-avail {
+      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: rgba(200,168,130,0.5);
+    }
+
+    /* ── CURSOR ── */
+    #tt-cursor {
+      width: 40px; height: 40px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 10000;
+      transition: transform 0.15s ease-out, width 0.3s, height 0.3s, background 0.3s;
+      mix-blend-mode: difference;
+    }
+    .cursor-hover { width: 60px !important; height: 60px !important; background: rgba(200,168,130,0.2) !important; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .tt-fade-up {
+      opacity: 0; transform: translateY(40px) scale(0.97);
+      transition: opacity 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .tt-fade-up.visible { opacity: 1; transform: translateY(0) scale(1); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .tt-section { padding: 80px 32px; }
+      .tt-steps { flex-direction: column; gap: 40px; }
+      .tt-steps::before { display: none; }
+      .tt-form-row { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .tt-section { padding: 60px 20px; }
+      .tt-title { font-size: 2.5rem; }
+      .tt-cta-section { padding: 100px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="tt-cursor"></div>
+
+<!-- BACK BAR -->
+<header class="back-bar">
+  <a href="servicos.html" class="back-link">
+    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18"/>
+    </svg>
+    Studio de Beleza Brasil
+  </a>
+  <span class="back-brand">Renan Melo Tattoo</span>
+  <a href="#agendar" class="back-cta">Agendar</a>
+</header>
+
+<!-- LIGHTBOX -->
+<div class="tt-lightbox" id="ttLightbox">
+  <button class="tt-lightbox-close" id="ttLightboxClose">✕ Fechar</button>
+  <img src="" alt="" class="tt-lightbox-img" id="ttLightboxImg">
+</div>
+
+<!-- ① HERO -->
+<section class="tt-hero" id="home">
+  <div class="tt-hero-placeholder">
+    <svg viewBox="0 0 24 24" fill="currentColor" color="#c8a882">
+      <path d="M20.95 4a3.28 3.28 0 00-.46-1.65A3.35 3.35 0 0017.14 1c-.58 0-1.67.25-2.82 1.09L3.18 9.74A3.32 3.32 0 002 12.29v8.38A1.33 1.33 0 003.33 22h8.38a3.32 3.32 0 002.56-1.18l7.65-11.14c.84-1.15 1.09-2.24 1.03-5.68zm-3.82 1.25c.42.42.55 1 .37 1.52L8 16.27l-2.27-2.27 9.5-9.12c.52-.18 1.1-.05 1.52.37h.38z"/>
+    </svg>
+  </div>
+  <video class="tt-hero-video" id="ttHeroVideo" autoplay muted loop playsinline>
+    <source src="assets/tattoo/tattoo-hero.mp4" type="video/mp4">
+  </video>
+  <div class="tt-hero-overlay"></div>
+  <div class="tt-hero-content">
+    <p class="tt-eyebrow">Belém, Pará — Tatuagem feita com técnica e intenção</p>
+    <h1 class="tt-title">Renan Melo<br><em>Tattoo</em></h1>
+    <p class="tt-styles">Fine Line · Aquarelado · Pontilhismo · Glitter · Blackwork</p>
+    <a href="#agendar" class="tt-hero-cta">Agendar minha tatuagem</a>
+    <div class="tt-seals">
+      <span class="tt-seal">Atendimento com hora marcada</span>
+      <span class="tt-seal">Ambiente profissional e seguro</span>
+      <span class="tt-seal">Materiais de qualidade</span>
+    </div>
+  </div>
+</section>
+
+<!-- ② PORTFÓLIO -->
+<section class="tt-section" id="portfolio">
+  <div class="tt-section-header">
+    <span class="tt-label tt-fade-up">Portfólio</span>
+    <h2 class="tt-heading tt-fade-up">O trabalho fala <em>por si</em></h2>
+    <p class="tt-microcopy tt-fade-up">Cada pessoa chega com uma ideia. O que você vê aqui é o que acontece quando a gente leva isso a sério.</p>
+  </div>
+
+  <div class="tt-marquee tt-fade-up">
+    <div class="tt-marquee-track">
+      <!-- Original items -->
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (1).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (2).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (3).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (4).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (5).png" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (6).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (7).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (8).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (9).png" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (10).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (11).png" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (12).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <!-- Duplicate items for loop -->
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (1).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (2).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (3).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (4).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (5).png" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (6).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (7).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (8).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (9).png" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (10).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (11).png" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+      <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (12).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ④ COMO FUNCIONA + FORMULÁRIO -->
+<section class="tt-section" id="como-funciona">
+  <div class="tt-section-header">
+    <span class="tt-label tt-fade-up">Processo</span>
+    <h2 class="tt-heading tt-fade-up">Como <em>funciona</em></h2>
+  </div>
+  <div class="tt-steps tt-fade-up">
+    <div class="tt-step">
+      <div class="tt-step-num">01</div>
+      <h3 class="tt-step-title">Envie sua ideia</h3>
+      <p class="tt-step-desc">Você descreve o que quer usando o formulário abaixo.</p>
+    </div>
+    <div class="tt-step">
+      <div class="tt-step-num">02</div>
+      <h3 class="tt-step-title">Retorno pelo WhatsApp</h3>
+      <p class="tt-step-desc">O Renan entra em contato para alinhar os detalhes.</p>
+    </div>
+    <div class="tt-step">
+      <div class="tt-step-num">03</div>
+      <h3 class="tt-step-title">Confirmação</h3>
+      <p class="tt-step-desc">Aprovação do design e agendamento da sessão.</p>
+    </div>
+    <div class="tt-step">
+      <div class="tt-step-num">04</div>
+      <h3 class="tt-step-title">Sessão</h3>
+      <p class="tt-step-desc">Você chega, se acomoda e a arte começa.</p>
+    </div>
+  </div>
+
+  <p class="tt-transition-text tt-fade-up">Você traz a ideia. <span>A gente cuida do resto.</span></p>
+
+  <p class="tt-fade-up" style="text-align: center; font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px;">Leva menos de 1 minuto para começar</p>
+
+  <form class="tt-form tt-fade-up" id="agendar" onsubmit="handleTattooForm(event)">
+    <div class="tt-form-row">
+      <div class="tt-form-group">
+        <label>Nome</label>
+        <input type="text" placeholder="Seu nome completo" required>
+      </div>
+      <div class="tt-form-group">
+        <label>WhatsApp</label>
+        <input type="tel" placeholder="(91) 9 0000-0000" required>
+      </div>
+    </div>
+    <div class="tt-form-group">
+      <label>Descreva sua ideia de tatuagem</label>
+      <textarea placeholder="Ex: quero uma flor no pulso, estilo delicado, algo que lembre minha avó" required></textarea>
+    </div>
+    <div class="tt-form-row">
+      <div class="tt-form-group">
+        <label>Estilo desejado</label>
+        <select required>
+          <option value="" disabled selected>Selecione o estilo</option>
+          <option>Fine Line</option>
+          <option>Aquarelado</option>
+          <option>Pontilhismo</option>
+          <option>Glitter Tattoo</option>
+          <option>Blackwork</option>
+        </select>
+      </div>
+      <div class="tt-form-group">
+        <label>Tamanho aproximado</label>
+        <select required>
+          <option value="" disabled selected>Selecione o tamanho</option>
+          <option>Pequeno (até 5cm)</option>
+          <option>Médio (5–15cm)</option>
+          <option>Grande (15cm+)</option>
+        </select>
+      </div>
+    </div>
+    <div class="tt-form-row">
+      <div class="tt-form-group">
+        <label>Parte do corpo</label>
+        <input type="text" placeholder="Ex: antebraço, costela, pescoço...">
+      </div>
+      <div class="tt-form-group">
+        <label>Referência (opcional)</label>
+        <input type="file" accept="image/*">
+      </div>
+    </div>
+    <button type="submit" class="tt-submit">Enviar minha ideia</button>
+    <div class="tt-guarantees">
+      <span class="tt-guarantee">Respondemos em até 24 horas</span>
+      <span class="tt-guarantee">Atendimento direto pelo WhatsApp</span>
+      <span class="tt-guarantee">Orçamento sem compromisso</span>
+    </div>
+  </form>
+</section>
+
+<!-- ⑤ CTA FINAL -->
+<section class="tt-cta-section">
+  <div class="tt-cta-bg"></div>
+  <div class="tt-cta-grid"></div>
+  <div class="tt-cta-content">
+    <h2 class="tt-cta-text">Você já viu o trabalho.<em>Agora é a sua vez.</em></h2>
+    <a href="#agendar" class="tt-cta-btn">Agendar minha tatuagem</a>
+    <div class="tt-social">
+      <a href="https://instagram.com/renanmelotattoo" target="_blank" rel="noopener" class="tt-social-link">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        @renanmelotattoo
+      </a>
+      <a href="https://wa.me/5591984692274?text=Olá!%20Quero%20agendar%20uma%20tatuagem." target="_blank" rel="noopener" class="tt-social-link">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        (91) 9 8469-2274
+      </a>
+    </div>
+    <p class="tt-avail">Atendemos terça, quinta e sábado — com horário marcado via agendamento</p>
+  </div>
+</section>
+
+<script>
+  // Custom Cursor
+  const cursor = document.getElementById('tt-cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX - cursor.offsetWidth/2 + 'px';
+    cursor.style.top = e.clientY - cursor.offsetHeight/2 + 'px';
+  });
+  document.querySelectorAll('a, button, .tt-marquee-item, input, textarea, select').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+  });
+
+  // Back Bar Scroll
+  window.addEventListener('scroll', () => {
+    const bar = document.querySelector('.back-bar');
+    if (window.scrollY > 50) bar.classList.add('scrolled');
+    else bar.classList.remove('scrolled');
+  });
+
+  // Hero video
+  const ttVideo = document.getElementById('ttHeroVideo');
+  if (ttVideo) {
+    ttVideo.addEventListener('loadeddata', () => ttVideo.classList.add('loaded'));
+    ttVideo.play().catch(() => {});
+  }
+
+  // Fade-up scroll observer
+  const ttObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.05, rootMargin: '0px 0px -60px 0px' });
+  document.querySelectorAll('.tt-fade-up').forEach(el => ttObs.observe(el));
+
+  // Lightbox
+  const lightbox = document.getElementById('ttLightbox');
+  const lightboxImg = document.getElementById('ttLightboxImg');
+  window.openLightbox = function(img) {
+    lightboxImg.src = img.src;
+    lightboxImg.alt = img.alt;
+    lightbox.classList.add('open');
+  };
+  document.getElementById('ttLightboxClose').addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('open'); });
+
+  // Form → WhatsApp
+  function handleTattooForm(e) {
+    e.preventDefault();
+    const form = e.target;
+    // Captura campos com segurança
+    const inputs = form.querySelectorAll('input');
+    const nome = inputs[0]?.value || '';
+    const wpp = inputs[1]?.value || '';
+    const ideia = form.querySelector('textarea')?.value || '';
+    const selects = form.querySelectorAll('select');
+    const estilo = selects[0]?.value || '';
+    const tamanho = selects[1]?.value || '';
+    const corpo = inputs[2]?.value || '';
+    
+    const msg = `Olá Renan! Quero agendar uma tatuagem.\n\n*Nome:* ${nome}\n*WhatsApp:* ${wpp}\n*Ideia:* ${ideia}\n*Estilo:* ${estilo}\n*Tamanho:* ${tamanho}\n*Localização:* ${corpo}`;
+    window.open(`https://wa.me/5591984692274?text=${encodeURIComponent(msg)}`, '_blank');
+  }
+</script>
+</body>
+</html>

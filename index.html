@@ -50,58 +50,242 @@
       background: linear-gradient(to bottom, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.15) 40%, rgba(10,10,10,0.7) 100%);
     }
 
-    .landing-content {
+    .landing-hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+      height: 100vh;
       position: relative;
       z-index: 2;
-      text-align: center;
-      padding: 40px;
-      max-width: 900px;
-      color: #fff;
+      padding: 0 60px;
     }
 
-    .landing-text {
+    .landing-content {
+      position: relative;
+      text-align: left;
+      padding: 40px 0;
+      max-width: 650px;
+      color: #fff;
+      z-index: 10;
+    }
+
+    .landing-block {
       opacity: 0;
-      animation: fadeInUp 0.8s ease-out forwards;
+      transform: translateY(30px);
+      transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    .landing-block.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .landing-eyebrow {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
-      font-weight: 600;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 500;
       color: #c8a96e;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.35em;
+      margin-bottom: 24px;
+      display: inline-block;
     }
 
     .landing-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem;
-      font-weight: 600;
-      line-height: 1.2;
-      margin: 20px 0 40px;
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      line-height: 1.15;
+      margin-bottom: 28px;
       color: #fff;
     }
 
     .landing-subtitle {
       font-family: 'Jost', sans-serif;
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #faf7f2;
-      margin-bottom: 50px;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 22px;
+      letter-spacing: 0.03em;
+    }
+
+    .landing-text {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 36px;
+    }
+
+    .landing-badges {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 14px;
+      margin-bottom: 44px;
+    }
+
+    .landing-badge {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(200, 169, 110, 0.8);
+      border: 1px solid rgba(200, 169, 110, 0.3);
+      padding: 7px 14px;
+      border-radius: 2px;
+      background: rgba(200, 169, 110, 0.06);
+      transition: all 0.3s ease;
+    }
+
+    .landing-badge:hover {
+      background: rgba(200, 169, 110, 0.15);
+      border-color: rgba(200, 169, 110, 0.6);
+      color: #c8a96e;
+      transform: translateY(-2px);
+    }
+
+    .landing-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 16px;
+    }
+
+    .landing-expert {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 45%;
+      height: 90%;
+      pointer-events: none;
+      z-index: 5;
+      display: flex;
+      align-items: flex-end;
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 1.5s ease 0.6s, transform 1.5s ease 0.6s;
+    }
+
+    .landing-expert::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      height: 90%;
+      background: radial-gradient(circle, rgba(200, 169, 110, 0.25) 0%, transparent 60%);
+      z-index: -1;
+      border-radius: 50%;
+      animation: pulseGlow 5s infinite alternate ease-in-out;
+      opacity: 0;
+      transition: opacity 2s ease 1s;
+    }
+
+    .landing-expert.visible::before {
+      opacity: 1;
+    }
+
+    .landing-expert.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .landing-expert img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: bottom right;
+      filter: drop-shadow(-10px 0 30px rgba(0,0,0,0.8));
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.5; }
+      100% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    }
+
+    .expert-badges {
+      position: absolute;
+      top: 15%;
+      left: 55%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      z-index: 3;
+      pointer-events: none;
+      gap: 15px;
+    }
+    
+    .expert-title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .expert-title span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-weight: 500;
+      font-style: italic;
+      background: linear-gradient(135deg, rgba(200, 169, 110, 0.9) 0%, rgba(200, 169, 110, 0.2) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 0.95;
+      white-space: nowrap;
+      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.8));
+    }
+
+    .expert-subtitle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .expert-subtitle small {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: #dfc08a;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+      white-space: nowrap;
+      margin-top: 12px;
+    }
+
+    .subtitle-by {
+      font-family: 'Jost', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.6em;
+      color: rgba(223, 192, 138, 0.8);
+      text-transform: uppercase;
     }
 
     .landing-cta {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       background: #c8a96e;
       color: #0a0a0a;
-      padding: 16px 40px;
+      padding: 16px 36px;
       border: none;
       border-radius: 2px;
       font-family: 'Jost', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.15em;
       cursor: pointer;
       transition: all 0.3s ease;
       text-decoration: none;
@@ -110,41 +294,74 @@
     .landing-cta:hover {
       background: #dfc08a;
       transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(200, 169, 110, 0.3);
+      box-shadow: 0 8px 30px rgba(200, 169, 110, 0.3);
     }
 
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .landing-cta svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* Omit secondary for space */
+
+    @media (max-width: 1100px) {
+      .landing-hero-inner { padding: 0 40px; }
+      .landing-content { max-width: 500px; }
     }
 
     @media (max-width: 768px) {
-      .landing-title {
-        font-size: 2.2rem;
+      .landing-hero-inner {
+        flex-direction: column;
+        justify-content: center;
+        padding: 40px 24px;
+        align-items: center;
       }
-
-      .landing-subtitle {
-        font-size: 1rem;
-      }
-
       .landing-content {
-        padding: 20px;
+        text-align: center;
+        max-width: 100%;
+        padding-top: 60px;
+      }
+      .landing-badges, .landing-btns {
+        justify-content: center;
+      }
+      .landing-badge {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+      .landing-cta {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+      }
+      .landing-expert {
+        width: 85%;
+        height: 70%;
+        left: 50%;
+        right: auto;
+        top: 50%;
+        bottom: auto;
+        transform: translateX(-50%) translateY(-50%) scale(0.95);
+        opacity: 0;
+        z-index: 1;
+        justify-content: center;
+        transition: opacity 1.2s ease 0s, transform 1.2s ease 0s; /* aparece ANTES do texto */
+      }
+      .landing-expert.visible {
+        opacity: 0.45;
+        transform: translateX(-50%) translateY(-50%) scale(1);
+      }
+      .landing-expert img {
+        object-position: center center;
+      }
+      .expert-badges {
+        display: none !important;
       }
     }
 
     @media (max-width: 480px) {
       .landing-title {
         font-size: 1.8rem;
-      }
-
-      .landing-subtitle {
-        font-size: 0.9rem;
       }
     }
   </style>
@@ -153,12 +370,27 @@
 
 <section class="landing-hero">
   <video class="landing-video" id="landing-video" autoplay muted loop playsinline>
-    <source src="intro.mp4" type="video/mp4">
+    <source src="assets/img/intro.mp4?v=2" type="video/mp4">
   </video>
   <div class="landing-overlay"></div>
 
-  <div class="landing-content" id="landing-content">
-    <!-- Text will be animated in by JS -->
+  <div class="landing-hero-inner">
+    <div class="landing-content" id="landing-content">
+      <!-- Content appears after delay -->
+    </div>
+    <div class="landing-expert" id="landing-expert">
+      <div class="expert-badges">
+        <div class="expert-title">
+          <span>Studio de Beleza</span>
+          <span>Brasil</span>
+        </div>
+        <div class="expert-subtitle">
+          <span class="subtitle-by">BY</span>
+          <small>Madson Soares</small>
+        </div>
+      </div>
+      <img src="assets/img/madson.webp?v=2" alt="Madson Soares - Especialista" onerror="this.style.display='none'">
+    </div>
   </div>
 </section>
 
@@ -170,14 +402,6 @@
     const landingContent = document.getElementById('landing-content');
     const landingVideo = document.getElementById('landing-video');
 
-    const textPieces = [
-      { type: 'eyebrow', text: 'Studio de Beleza Brasil by Madson Soares' },
-      { type: 'subtitle', text: 'Pioneirismo e Referência em Beleza em Belém' },
-      { type: 'title', text: 'A Referência Absoluta em Beleza e Estética em Belém' },
-      { type: 'subtitle', text: 'Uma década não se conta em anos… se prova em resultados, autoridade e transformação real.<br><br>Madson Soares não construiu apenas um studio. Construiu um padrão. Um padrão onde estética não é vaidade — é posicionamento. Onde cada detalhe foi pensado para entregar sofisticação, segurança e impacto visual.<br><br><strong>Pioneiros em Bronzeamento Masculino</strong> • <strong>Especialistas em Estética Avançada</strong> • <strong>Padrão Internacional de Qualidade</strong>' },
-      { type: 'button', text: 'Conhecer nossos Serviços' }
-    ];
-
     // Video loaded
     landingVideo.addEventListener('loadeddata', function() {
       landingVideo.classList.add('loaded');
@@ -185,61 +409,68 @@
 
     landingVideo.play();
 
-    // Start animations after 2.5s
+    // Create content blocks (hidden initially)
+    const contentHTML = `
+      <span class="landing-block landing-eyebrow" data-delay="0">Belém, Pará — Desde 2014</span>
+      <h1 class="landing-block landing-title" data-delay="400">A Referência Absoluta em Beleza e Estética em Belém</h1>
+      <p class="landing-block landing-subtitle" data-delay="800">Uma década não se conta em anos… se prova em resultados, autoridade e transformação real.</p>
+      <p class="landing-block landing-text" data-delay="1200">Madson Soares não construiu apenas um studio. Construiu um padrão. Um padrão onde estética não é vaidade, é posicionamento. Onde cada detalhe foi pensado para entregar sofisticação, segurança e impacto visual.</p>
+      <div class="landing-block landing-badges" data-delay="1600">
+        <span class="landing-badge">Pioneiros em Bronzeamento Masculino</span>
+        <span class="landing-badge">Especialistas em Estética Avançada</span>
+        <span class="landing-badge">Salão Padrão Internacional de Qualidade</span>
+      </div>
+      <div class="landing-block landing-btns" data-delay="2000">
+        <a href="servicos.html" class="landing-cta">Conhecer Nossos Serviços</a>
+        <a href="tattoo.html" class="landing-cta" style="background:transparent; border: 1px solid #c8a96e; color: #c8a96e;">Renan Melo Tattoo</a>
+      </div>
+    `;
+
+    // Inject content
+    landingContent.innerHTML = contentHTML;
+
+    // Aguarda apenas 0.5s (antes era 10s) para mostrar o conteúdo com efeito cascata
     setTimeout(() => {
-      textPieces.forEach((piece, index) => {
+      const expert = document.getElementById('landing-expert');
+      if (expert) expert.classList.add('visible');
+
+      const blocks = document.querySelectorAll('.landing-block');
+      blocks.forEach((block) => {
+        const delay = parseInt(block.dataset.delay) || 0;
         setTimeout(() => {
-          let element;
-
-          if (piece.type === 'eyebrow') {
-            element = document.createElement('span');
-            element.className = 'landing-text landing-eyebrow';
-            element.innerHTML = piece.text;
-          } else if (piece.type === 'title') {
-            element = document.createElement('h1');
-            element.className = 'landing-text landing-title';
-            element.innerHTML = piece.text;
-          } else if (piece.type === 'subtitle') {
-            element = document.createElement('p');
-            element.className = 'landing-text landing-subtitle';
-            element.innerHTML = piece.text;
-          } else if (piece.type === 'button') {
-            element = document.createElement('a');
-            element.className = 'landing-text landing-cta';
-            element.href = 'servicos.html';
-            element.innerHTML = piece.text;
-            element.style.display = 'inline-block';
-          }
-
-          if (element) {
-            landingContent.appendChild(element);
-            element.style.animation = `fadeInUp 0.8s ease-out forwards`;
-          }
-        }, index * 400);
+          block.classList.add('visible');
+        }, delay);
       });
-    }, 2500);
+    }, 500);
 
     // Cursor tracking
-    const cursor = document.querySelector('.cursor');
-    const cursorRing = document.querySelector('.cursor-ring');
+    if (window.matchMedia("(pointer: fine)").matches) {
+      const cursor = document.querySelector('.cursor');
+      const cursorRing = document.querySelector('.cursor-ring');
 
-    if (cursor && cursorRing) {
-      document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-        cursorRing.style.left = e.clientX + 'px';
-        cursorRing.style.top = e.clientY + 'px';
-      });
+      if (cursor && cursorRing) {
+        document.addEventListener('mousemove', (e) => {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+          cursorRing.style.left = e.clientX + 'px';
+          cursorRing.style.top = e.clientY + 'px';
+        });
 
-      document.addEventListener('mousedown', () => {
-        cursor.classList.add('expanded');
-        cursorRing.classList.add('expanded');
-      });
+        document.addEventListener('mousedown', () => {
+          cursor.classList.add('expanded');
+          cursorRing.classList.add('expanded');
+        });
 
-      document.addEventListener('mouseup', () => {
-        cursor.classList.remove('expanded');
-        cursorRing.classList.remove('expanded');
-      });
+        document.addEventListener('mouseup', () => {
+          cursor.classList.remove('expanded');
+          cursorRing.classList.remove('expanded');
+        });
+      }
+    } else {
+      const cur = document.getElementById('cursor');
+      const ring = document.getElementById('cursor-ring');
+      if(cur) cur.style.display = 'none';
+      if(ring) ring.style.display = 'none';
     }
   });
 </script>
