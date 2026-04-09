@@ -128,3 +128,39 @@ const notifyForm = document.getElementById('notifyForm');
 if(notifyForm) {
   notifyForm.addEventListener('submit', handleNotifySubmit);
 }
+
+// ── NUMBER COUNTER ANIMATION ──
+function animateCount(el, target, decimals, prefix, suffix, duration) {
+  const t0 = performance.now();
+  function step(now) {
+    const p = Math.min((now - t0) / duration, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    const val = decimals > 0 ? (eased * target).toFixed(decimals) : Math.floor(eased * target);
+    el.innerHTML = prefix + val + suffix;
+    if (p < 1) requestAnimationFrame(step);
+    else el.innerHTML = prefix + target + suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+const counterDefs = [
+  { prefix: '+', target: 10, decimals: 0, suffix: ' <small>anos</small>' },
+  { prefix: '',  target: 4.8, decimals: 1, suffix: '<small>\u2605</small>' },
+  { prefix: '+', target: 50, decimals: 0, suffix: ' <small>clientes</small>' },
+  { prefix: '',  target: 15, decimals: 0, suffix: '+ <small>procedimentos</small>' },
+];
+const numerosSection = document.getElementById('numeros');
+if (numerosSection) {
+  const numObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        document.querySelectorAll('.numero-val').forEach((el, i) => {
+          const d = counterDefs[i];
+          if (d) animateCount(el, d.target, d.decimals, d.prefix, d.suffix, 2000);
+        });
+        numObs.disconnect();
+      }
+    });
+  }, { threshold: 0.4 });
+  numObs.observe(numerosSection);
+}

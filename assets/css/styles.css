@@ -45,11 +45,11 @@ header.scrolled{
 }
 .header-inner{
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 60px;height:90px;
+  padding:0 60px;height:106px;
   border-bottom:1px solid rgba(200,169,110,0.12);
 }
 .logo-wrap{display:flex;align-items:center;gap:14px;text-decoration:none}
-.logo-img{height:105px;width:auto;object-fit:contain;filter:brightness(1.05)}
+.logo-img{height:135px;width:auto;object-fit:contain;filter:brightness(1.05)}
 .logo-text{font-family:var(--serif);font-size:1.25rem;font-weight:500;color:#fff;letter-spacing:.02em;line-height:1.2}
 .logo-text span{color:var(--gold);font-style:italic}
 nav{display:flex;align-items:center;gap:36px}
@@ -428,6 +428,17 @@ nav{display:flex;align-items:center;gap:36px}
   letter-spacing:.03em;
 }
 .servico-list-mini li:last-child{border-bottom:none}
+.servico-cta{
+  display:inline-block;margin-top:16px;
+  font-size:.7rem;font-weight:600;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold);text-decoration:none;
+  border-bottom:1px solid rgba(200,169,110,.4);
+  padding-bottom:2px;
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .5s var(--ease) .08s,opacity .4s .08s,color .3s;
+}
+.servico-card:hover .servico-cta{max-height:40px;opacity:1}
+.servico-cta:hover{color:var(--gold-light);border-bottom-color:var(--gold-light)}
 
 /* ── DESTAQUES ── */
 .destaques{background:var(--offwhite);padding:110px 60px}

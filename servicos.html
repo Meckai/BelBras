@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
     content="Studio de Beleza Brasil — Referência em salão de beleza, estética e bronzeamento em Belém, PA. Pioneiros em bronzeamento masculino. Especialistas em harmonização facial, preenchimento labial, skinbooster e muito mais.">
+  <!-- Preload da imagem crítica acima da dobra -->
+  <link rel="preload" as="image" href="assets/img/sobre-main.webp">
   <title>Studio de Beleza Brasil | Salão, Bronze e Estética em Belém</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,8 +21,8 @@
   <meta property="og:title" content="Studio de Beleza Brasil | Salão, Bronze e Estética em Belém">
   <meta property="og:description"
     content="Referência em salão de beleza, estética e bronzeamento em Belém, PA. Especialistas em harmonização facial, preenchimento labial, bronzeamento masculino e feminino.">
-  <meta property="og:image" content="log-bg.png">
-  <meta property="og:url" content="https://sbbbelem.vercel.app">
+  <meta property="og:image" content="https://sbbbelem.vercel.app/assets/img/log-bg.webp">
+  <meta property="og:url" content="https://sbbbelem.vercel.app/servicos.html">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
 
@@ -28,10 +30,10 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Studio de Beleza Brasil | Salão, Bronze e Estética em Belém">
   <meta name="twitter:description" content="Referência em salão de beleza, estética e bronzeamento em Belém, PA.">
-  <meta name="twitter:image" content="log-bg.png">
+  <meta name="twitter:image" content="https://sbbbelem.vercel.app/assets/img/log-bg.webp">
 
   <!-- Canonical -->
-  <link rel="canonical" href="https://sbbbelem.vercel.app">
+  <link rel="canonical" href="https://sbbbelem.vercel.app/servicos.html">
 
   <!-- Favicon -->
   <link rel="icon"
@@ -42,6 +44,12 @@
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-CTC2VRV0Y6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-CTC2VRV0Y6');
+  </script>
   <!-- JSON-LD Schema -->
   <script type="application/ld+json">
   {
@@ -52,10 +60,10 @@
     "telephone": "+5591981172525",
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Conjunto Panorama XXI, Quadra 8, Casa 1 – Mangueirão",
+      "streetAddress": "Conjunto Panorama XXI, Quadra 8, Casa 1",
       "addressLocality": "Belém",
       "addressRegion": "PA",
-      "postalCode": "66645-120",
+      "postalCode": "67113-345",
       "addressCountry": "BR"
     },
     "openingHours": [
@@ -67,7 +75,7 @@
       "Sa 07:00-18:00"
     ],
     "priceRange": "$$",
-    "image": "log-bg.png",
+    "image": "https://sbbbelem.vercel.app/assets/img/log-bg.webp",
     "sameAs": [
       "https://www.instagram.com/studiodebelezabrasil",
       "https://www.facebook.com/studiodebelezabrasilbymadsonsoares"
@@ -87,8 +95,8 @@
     <!-- HEADER -->
     <header id="header">
       <div class="header-inner">
-        <a href="#home" class="logo-wrap">
-          <img src="log-bg.png"
+        <a href="index.html" class="logo-wrap">
+          <img src="assets/img/log-bg.webp"
             alt="Studio de Beleza Brasil By Madson Soares" class="logo-img">
           <span class="logo-text">Studio de <span>Beleza Brasil</span><br><small
               style="font-size:.65em;font-weight:300;color:rgba(255,255,255,.6);letter-spacing:.1em">By Madson
@@ -117,7 +125,7 @@
       <div class="sobre-overlay"></div>
       <div class="sobre-content fade-up">
         <span class="sobre-eyebrow">Belém, Pará — Desde 2014</span>
-        <h2 class="sobre-title">A Referência Absoluta em Beleza e Estética</h2>
+        <h1 class="sobre-title">A Referência Absoluta em Beleza e Estética</h1>
         <p class="sobre-subtitle">Uma década transformando imagem em presença.<br>Sofisticação, técnica e resultado —
           sem espaço para o comum.</p>
         <p class="sobre-text">Madson Soares estabelece um novo padrão na estética em Belém, com atendimento exclusivo,
@@ -175,7 +183,7 @@
       </div>
       <div class="servicos-grid">
         <div class="servico-card fade-up">
-          <img src="assets/img/bronze-masc.webp" alt="Bronzeamento Masculino" class="servico-bg servico-bg-body">
+          <img src="assets/img/bronze-masc.webp" alt="Resultado de bronzeamento masculino no Studio de Beleza Brasil em Belém" class="servico-bg servico-bg-body">
           <div class="servico-overlay"></div>
           <div class="servico-content">
             <span class="servico-num">01</span>
@@ -189,10 +197,11 @@
               <li>Montagem na Fita</li>
               <li>Banho de Lua</li>
             </ul>
+            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Bronzeamento%20Masculino." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
           </div>
         </div>
         <div class="servico-card fade-up">
-          <img src="assets/img/servico-1.webp" alt="Bronzeamento Feminino" class="servico-bg">
+          <img src="assets/img/servico-1.webp" alt="Resultado de bronzeamento feminino no Studio de Beleza Brasil em Belém" class="servico-bg">
           <div class="servico-overlay"></div>
           <div class="servico-content">
             <span class="servico-num">02</span>
@@ -205,10 +214,11 @@
               <li>Esfoliação com Massagem</li>
               <li>Banho de Lua</li>
             </ul>
+            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Bronzeamento%20Feminino." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
           </div>
         </div>
         <div class="servico-card fade-up">
-          <img src="assets/img/servico-3.webp" alt="Estética Facial" class="servico-bg">
+          <img src="assets/img/servico-3.webp" alt="Procedimento de estética facial e harmonização no Studio de Beleza Brasil" class="servico-bg">
           <div class="servico-overlay"></div>
           <div class="servico-content">
             <span class="servico-num">03</span>
@@ -223,10 +233,11 @@
               <li>Microagulhamento</li>
               <li>Botox Facial</li>
             </ul>
+            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Est%C3%A9tica%20Facial." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
           </div>
         </div>
         <div class="servico-card fade-up">
-          <img src="assets/img/servico-4.webp" alt="Salão" class="servico-bg">
+          <img src="assets/img/servico-4.webp" alt="Serviços de salão de beleza — corte, escova e coloração no Studio de Beleza Brasil" class="servico-bg">
           <div class="servico-overlay"></div>
           <div class="servico-content">
             <span class="servico-num">04</span>
@@ -241,10 +252,11 @@
               <li>Botox Capilar</li>
               <li>Tranças e Dreadlocks</li>
             </ul>
+            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20servi%C3%A7o%20no%20Sal%C3%A3o." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
           </div>
         </div>
         <div class="servico-card fade-up">
-          <img src="assets/img/servico-5.webp" alt="Piercing" class="servico-bg">
+          <img src="assets/img/servico-5.webp" alt="Aplicação profissional de body piercing com material esterilizado no Studio de Beleza Brasil" class="servico-bg">
           <div class="servico-overlay"></div>
           <div class="servico-content">
             <span class="servico-num">05</span>
@@ -257,10 +269,11 @@
               <li>Lábios</li>
               <li>Outros piercings</li>
             </ul>
+            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Body%20Piercing." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
           </div>
         </div>
         <div class="servico-card fade-up">
-          <img src="assets/img/servico-2.webp" alt="Beleza e Bem-estar" class="servico-bg">
+          <img src="assets/img/servico-2.webp" alt="Serviços de beleza e bem-estar — manicure, micropigmentação e massagem no Studio de Beleza Brasil" class="servico-bg">
           <div class="servico-overlay"></div>
           <div class="servico-content">
             <span class="servico-num">06</span>
@@ -275,6 +288,7 @@
               <li>Maquiagem e Depilação</li>
               <li>Massagens</li>
             </ul>
+            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20servi%C3%A7o%20de%20Beleza%20e%20Bem-estar." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
           </div>
         </div>
       </div>
@@ -346,26 +360,25 @@
       </div>
       <div class="galeria-carousel-wrap fade-up">
         <div class="galeria-carousel" id="galeriaCarousel">
-          <div class="gcard"><img src="assets/img/galeria-01.webp" alt="Bronzeamento"></div>
-          <div class="gcard"><img src="assets/img/galeria-02.webp" alt="Bronzeamento"></div>
-          <div class="gcard"><img src="assets/img/galeria-03.webp" alt="Bronzeamento"></div>
-          <div class="gcard"><img src="assets/img/galeria-04.webp" alt="Bronzeamento"></div>
-          <div class="gcard"><img src="assets/img/galeria-05.webp" alt="Bronzeamento"></div>
-          <div class="gcard"><img src="assets/img/galeria-06.webp" alt="Bronzeamento"></div>
-          <div class="gcard"><img src="assets/img/galeria-07.webp" alt="Bronzeamento"></div>
-          <div class="gcard"><img src="assets/img/galeria-08.webp" alt="Bronzeamento"></div>
-          <div class="gcard"><img src="assets/img/galeria-09.webp" alt="Preenchimento Labial"></div>
-          <div class="gcard"><img src="assets/img/galeria-10.webp" alt="Skinbooster"></div>
-          <div class="gcard"><img src="assets/img/galeria-11.webp" alt="Remoção de Sinais"></div>
-          <div class="gcard"><img src="assets/img/galeria-12.webp" alt="Espaço"></div>
-          <div class="gcard"><img src="assets/img/galeria-13.webp" alt="Espaço"></div>
-          <div class="gcard"><img src="assets/img/galeria-14.webp" alt="Espaço"></div>
-          <div class="gcard"><img src="assets/img/galeria-15.webp" alt="Salão"></div>
-          <div class="gcard"><img src="assets/img/galeria-16.webp" alt="Salão"></div>
-          <div class="gcard"><img src="assets/img/galeria-17.webp" alt="Piercing"></div>
-          <div class="gcard"><img src="assets/img/galeria-18.webp" alt="Piercing"></div>
-          <div class="gcard"><img src="assets/img/galeria-19.webp" alt="Bronzeamento"></div>
-          <div class="gcard"><img src="assets/img/galeria-20.webp" alt="Bronzeamento"></div>
+          <div class="gcard"><img src="assets/img/galeria-01.webp" alt="Resultado de bronzeamento masculino — Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/galeria-02.webp" alt="Resultado de bronzeamento masculino em Belém"></div>
+          <div class="gcard"><img src="assets/img/galeria-04.webp" alt="Bronzeamento feminino — resultado natural e uniforme"></div>
+          <div class="gcard"><img src="assets/img/galeria-05.webp" alt="Bronzeamento feminino com esfoliação corporal"></div>
+
+          <div class="gcard"><img src="assets/img/galeria-07.webp" alt="Bronzeamento artificial masculino — Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/galeria-08.webp" alt="Técnica de bronzeamento com montagem na fita"></div>
+          <div class="gcard"><img src="assets/img/galeria-09.webp" alt="Resultado de preenchimento labial — estética facial em Belém"></div>
+          <div class="gcard"><img src="assets/img/galeria-10.webp" alt="Resultado de Skinbooster — hidratação profunda da pele"></div>
+          <div class="gcard"><img src="assets/img/galeria-11.webp" alt="Procedimento de remoção de sinais — Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/galeria-12.webp" alt="Espaço interno do Studio de Beleza Brasil em Belém"></div>
+          <div class="gcard"><img src="assets/img/galeria-13.webp" alt="Ambiente premium do Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/galeria-14.webp" alt="Recepção e estrutura do Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/galeria-15.webp" alt="Salão de beleza — corte e escova no Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/galeria-16.webp" alt="Serviços de salão — coloração e mechas em Belém"></div>
+          <div class="gcard"><img src="assets/img/galeria-17.webp" alt="Body piercing profissional — Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/galeria-18.webp" alt="Aplicação de piercing com material esterilizado em Belém"></div>
+          <div class="gcard"><img src="assets/img/galeria-19.webp" alt="Bronzeamento com banho de lua — Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/galeria-20.webp" alt="Resultado de bronzeamento e esfoliação corporal em Belém"></div>
         </div>
       </div>
     </section>
@@ -551,7 +564,7 @@
         </div>
         <div class="mapa-wrap fade-up">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.254!2d-48.4342!3d-1.3654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48f3b7db56b7b%3A0x7a6d0a0a0a0a0a0a!2sConjunto%20Panorama%20XXI%2C%20Bel%C3%A9m%20-%20PA!5e0!3m2!1spt-BR!2sbr!4v1234567890"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.4!2d-48.4398641!3d-1.3775995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a48bb4197f274f%3A0x2b69d5ff1e2012bb!2sStudio%20de%20Beleza%20Brasil%20%7C%20Sal%C3%A3o%20de%20Beleza%2C%20Bronze%20Feminino%20e%20Masculino%20e%20Est%C3%A9tica%20em%20Bel%C3%A9m!5e0!3m2!1spt-BR!2sbr!4v1744229000000!5m2!1spt-BR!2sbr"
             allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             title="Localização Studio de Beleza Brasil">
           </iframe>
@@ -565,9 +578,9 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#home" class="logo-wrap">
-          <img src="log-bg.png"
-            alt="Studio de Beleza Brasil By Madson Soares" class="logo-img" style="height:56px;">
+        <a href="index.html" class="logo-wrap">
+          <img src="assets/img/log-bg.webp"
+            alt="Studio de Beleza Brasil By Madson Soares" class="logo-img" style="height:72px;">
           <span class="logo-text">Studio de <span>Beleza Brasil</span><br><small
               style="font-size:.65em;font-weight:300;color:rgba(255,255,255,.55);letter-spacing:.1em">By Madson
               Soares</small></span>
