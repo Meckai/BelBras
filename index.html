@@ -319,27 +319,55 @@
     @media (max-width: 768px) {
       .landing-hero-inner {
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start; /* Joga os elementos para cima */
         padding: 40px 24px;
         align-items: center;
       }
       .landing-content {
         text-align: center;
         max-width: 100%;
-        padding-top: 60px;
+        padding-top: 10px; /* Reduz margem inútil no topo do mobile */
+        z-index: 10;
+        position: relative;
+        text-shadow: 0px 4px 20px rgba(0,0,0,0.8); /* Eleva o ar premium separando da foto */
+      }
+      .landing-title {
+        font-size: 2.1rem;
+        margin-bottom: 12px;
+      }
+      .landing-subtitle {
+        font-size: 1rem;
+        margin-bottom: 12px;
+      }
+      .landing-text {
+        display: none; /* Elemento escondido no celular para um visual mais limpo e luxuoso */
       }
       .landing-badges, .landing-btns {
         justify-content: center;
       }
+      .landing-badges {
+        margin-bottom: 24px;
+        gap: 8px;
+      }
+      .landing-btns {
+        flex-direction: column; /* Empilha os botões Elegantemente */
+        align-items: center;
+        width: 100%;
+        gap: 12px;
+      }
       .landing-badge {
         width: 100%;
-        max-width: 300px;
+        max-width: 320px;
         text-align: center;
+        padding: 6px 10px;
+        font-size: 0.5rem;
       }
       .landing-cta {
         width: 100%;
-        max-width: 280px;
+        max-width: 320px;
         justify-content: center;
+        padding: 14px 20px;
+        letter-spacing: 0.2em; /* Letras espaçadas = toque de luxo */
       }
       .landing-expert {
         width: 150%;
