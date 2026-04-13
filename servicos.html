@@ -16,6 +16,27 @@
     rel="stylesheet">
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
+  <style>
+    .servico-diferenciais {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 14px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .5s var(--ease) .07s, opacity .4s .07s;
+    }
+    .servico-card:hover .servico-diferenciais {
+      max-height: 80px;
+      opacity: 1;
+    }
+    .servico-diferenciais span {
+      font-size: .72rem;
+      color: var(--gold);
+      letter-spacing: .05em;
+    }
+  </style>
 
   <!-- Open Graph -->
   <meta property="og:title" content="Studio de Beleza Brasil | Salão, Bronze e Estética em Belém">
@@ -282,7 +303,6 @@
             <p class="servico-desc">Serviços completos para seu cuidado pessoal e bem-estar, do design de sobrancelhas à
               maquiagem de noivas.</p>
             <ul class="servico-list-mini">
-              <li>Manicure e Pedicure</li>
               <li>Micropigmentação</li>
               <li>Design de Sobrancelhas</li>
               <li>Alongamento de Cílios</li>
@@ -290,6 +310,27 @@
               <li>Massagens</li>
             </ul>
             <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20servi%C3%A7o%20de%20Beleza%20e%20Bem-estar." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
+          </div>
+        </div>
+        <div class="servico-card fade-up">
+          <img src="assets/img/manicure.webp" alt="Serviços de manicure e pedicure profissional no Studio de Beleza Brasil em Belém" class="servico-bg">
+          <div class="servico-overlay"></div>
+          <div class="servico-content">
+            <span class="servico-num">07</span>
+            <h3>Mais do que unhas. Um padrão.</h3>
+            <p class="servico-desc">Cuidado, estética e acabamento profissional em cada detalhe. Ideal para manutenção ou transformação completa.</p>
+            <ul class="servico-list-mini">
+              <li>Simples — Manicure, Pedicure e Combinado</li>
+              <li>Francesinha — Mão e Pé</li>
+              <li>Decorados — Mão e Pé</li>
+              <li>Postiças — Simples, Decorada e Realista</li>
+              <li>Cuidados Especiais + Desencravamento</li>
+            </ul>
+            <div class="servico-diferenciais">
+              <span>✓ Atendimento com cuidado e precisão</span>
+              <span>✓ Ambiente confortável e profissional</span>
+            </div>
+            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Servi%C3%A7os%20de%20Unhas." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
           </div>
         </div>
       </div>
