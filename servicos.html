@@ -25,7 +25,7 @@
     /* ── BENTO GRID ── */
     .servicos-bento{
       grid-template-columns:repeat(4,1fr) !important;
-      grid-template-rows:420px 420px 320px !important;
+      grid-template-rows:minmax(460px, auto) minmax(460px, auto) minmax(360px, auto) !important;
       gap:20px !important;
       max-width:1440px !important;
     }
@@ -61,16 +61,16 @@
     .servico-card-wide{grid-column:span 2}
 
     /* ── FIX OVERFLOW: limita conteúdo revelado no hover ── */
-    /* Cards pequenos (420px) */
-    .servicos-bento .servico-card:not(.servico-card-featured):not(.servico-card-wide):hover .servico-desc{max-height:65px !important}
-    .servicos-bento .servico-card:not(.servico-card-featured):not(.servico-card-wide):hover .servico-list-mini{max-height:165px !important}
-    /* Card featured (840px — espaço generoso) */
-    .servico-card-featured:hover .servico-desc{max-height:110px !important}
-    .servico-card-featured:hover .servico-list-mini{max-height:220px !important}
-    /* Cards largos (320px — mais apertado) */
-    .servico-card-wide:hover .servico-desc{max-height:55px !important}
-    .servico-card-wide:hover .servico-list-mini{max-height:110px !important}
-    .servico-card-wide:hover .servico-diferenciais{max-height:45px !important}
+    /* Cards pequenos */
+    .servicos-bento .servico-card:not(.servico-card-featured):not(.servico-card-wide):hover .servico-desc{max-height:85px !important}
+    .servicos-bento .servico-card:not(.servico-card-featured):not(.servico-card-wide):hover .servico-list-mini{max-height:350px !important}
+    /* Card featured */
+    .servico-card-featured:hover .servico-desc{max-height:120px !important}
+    .servico-card-featured:hover .servico-list-mini{max-height:400px !important}
+    /* Cards largos */
+    .servico-card-wide:hover .servico-desc{max-height:75px !important}
+    .servico-card-wide:hover .servico-list-mini{max-height:220px !important}
+    .servico-card-wide:hover .servico-diferenciais{max-height:70px !important}
 
     /* Responsive */
     @media(max-width:1024px){
@@ -78,16 +78,18 @@
         grid-template-columns:1fr 1fr !important;
         grid-template-rows:auto !important;
       }
-      .servico-card-featured{grid-column:1 / span 2;grid-row:auto;min-height:440px}
-      .servico-card-wide{grid-column:1 / span 2}
-      .servicos-bento .servico-card{min-height:360px}
-      .servicos-bento .servico-card:hover .servico-desc{max-height:90px !important}
-      .servicos-bento .servico-card:hover .servico-list-mini{max-height:160px !important}
+      .servico-card-featured{grid-column:1 / span 2;grid-row:auto;min-height:540px}
+      .servico-card-wide{grid-column:1 / span 2;min-height:500px}
+      .servicos-bento .servico-card{min-height:500px}
+      .servicos-bento .servico-card:hover .servico-desc{max-height:100px !important}
+      .servicos-bento .servico-card:hover .servico-list-mini{max-height:350px !important}
+      .servicos-bento .servico-card:hover .servico-diferenciais{max-height:80px !important}
     }
     @media(max-width:600px){
       .servicos-bento{grid-template-columns:1fr !important}
-      .servico-card-featured,.servico-card-wide{grid-column:1 !important;min-height:380px}
-      .servicos-bento .servico-card{min-height:380px}
+      .servico-card-featured,.servico-card-wide{grid-column:1 !important;min-height:520px}
+      .servicos-bento .servico-card{min-height:500px}
+      .servicos-bento .servico-card:hover .servico-list-mini{max-height:350px !important}
     }
   </style>
 
