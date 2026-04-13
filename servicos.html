@@ -61,12 +61,12 @@
     .servico-card-wide{grid-column:span 2}
 
     /* ── FIX OVERFLOW: limita conteúdo revelado no hover ── */
-    /* Cards pequenos (420px) — cabe ~270px de conteúdo após padding */
+    /* Cards pequenos (420px) */
     .servicos-bento .servico-card:not(.servico-card-featured):not(.servico-card-wide):hover .servico-desc{max-height:65px !important}
-    .servicos-bento .servico-card:not(.servico-card-featured):not(.servico-card-wide):hover .servico-list-mini{max-height:130px !important}
+    .servicos-bento .servico-card:not(.servico-card-featured):not(.servico-card-wide):hover .servico-list-mini{max-height:165px !important}
     /* Card featured (840px — espaço generoso) */
     .servico-card-featured:hover .servico-desc{max-height:110px !important}
-    .servico-card-featured:hover .servico-list-mini{max-height:190px !important}
+    .servico-card-featured:hover .servico-list-mini{max-height:220px !important}
     /* Cards largos (320px — mais apertado) */
     .servico-card-wide:hover .servico-desc{max-height:55px !important}
     .servico-card-wide:hover .servico-list-mini{max-height:110px !important}
@@ -264,7 +264,6 @@
             <source src="assets/img/intro.mp4" type="video/mp4">
           </video>
           <div class="servico-overlay"></div>
-          <span class="servico-badge">Completo</span>
           <div class="servico-content">
             <span class="servico-num">04</span>
             <h3>Salão</h3>
