@@ -25,7 +25,7 @@
     /* ── BENTO GRID ── */
     .servicos-bento{
       grid-template-columns:repeat(4,1fr) !important;
-      grid-template-rows:380px 380px 300px !important;
+      grid-template-rows:420px 420px 320px !important;
       gap:20px !important;
       max-width:1440px !important;
     }
@@ -60,19 +60,34 @@
     /* Wide cards (bottom row) */
     .servico-card-wide{grid-column:span 2}
 
+    /* ── FIX OVERFLOW: limita conteúdo revelado no hover ── */
+    /* Cards pequenos (420px) — cabe ~270px de conteúdo após padding */
+    .servicos-bento .servico-card:not(.servico-card-featured):not(.servico-card-wide):hover .servico-desc{max-height:65px !important}
+    .servicos-bento .servico-card:not(.servico-card-featured):not(.servico-card-wide):hover .servico-list-mini{max-height:130px !important}
+    /* Card featured (840px — espaço generoso) */
+    .servico-card-featured:hover .servico-desc{max-height:110px !important}
+    .servico-card-featured:hover .servico-list-mini{max-height:190px !important}
+    /* Cards largos (320px — mais apertado) */
+    .servico-card-wide:hover .servico-desc{max-height:55px !important}
+    .servico-card-wide:hover .servico-list-mini{max-height:110px !important}
+    .servico-card-wide:hover .servico-diferenciais{max-height:45px !important}
+
     /* Responsive */
     @media(max-width:1024px){
       .servicos-bento{
         grid-template-columns:1fr 1fr !important;
         grid-template-rows:auto !important;
       }
-      .servico-card-featured{grid-column:1 / span 2;grid-row:auto;min-height:420px}
+      .servico-card-featured{grid-column:1 / span 2;grid-row:auto;min-height:440px}
       .servico-card-wide{grid-column:1 / span 2}
-      .servicos-bento .servico-card{min-height:320px}
+      .servicos-bento .servico-card{min-height:360px}
+      .servicos-bento .servico-card:hover .servico-desc{max-height:90px !important}
+      .servicos-bento .servico-card:hover .servico-list-mini{max-height:160px !important}
     }
     @media(max-width:600px){
       .servicos-bento{grid-template-columns:1fr !important}
-      .servico-card-featured,.servico-card-wide{grid-column:1 !important;min-height:340px}
+      .servico-card-featured,.servico-card-wide{grid-column:1 !important;min-height:380px}
+      .servicos-bento .servico-card{min-height:380px}
     }
   </style>
 
@@ -727,7 +742,19 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Studio de Beleza Brasil. Todos os direitos reservados. Desenvolvido com excelência.</p>
+      <div class="footer-bottom-inner">
+        <p>&copy; 2026 Studio de Beleza Brasil. Todos os direitos reservados.</p>
+        <div class="powered-by">
+          <span class="powered-text">Desenvolvido por</span>
+          <a href="https://wa.me/5591984928199" target="_blank" rel="noopener" class="agency-link">
+            <span class="meck-logo-text">
+              <span class="meck-blue">M</span><span class="meck-white">eck</span><span class="meck-blue">AI</span>
+              <span class="meck-agency-small">AGENCY</span>
+            </span>
+          </a>
+          <a href="tel:+5591984928199" class="agency-phone">(91) 98492-8199</a>
+        </div>
+      </div>
     </div>
   </footer>
 
