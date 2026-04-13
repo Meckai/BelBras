@@ -17,24 +17,62 @@
   <!-- CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
   <style>
-    .servico-diferenciais {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-top: 14px;
-      max-height: 0;
-      overflow: hidden;
-      opacity: 0;
-      transition: max-height .5s var(--ease) .07s, opacity .4s .07s;
+    /* ── DIFERENCIAIS ── */
+    .servico-diferenciais{display:flex;flex-direction:column;gap:5px;margin-top:14px;max-height:0;overflow:hidden;opacity:0;transition:max-height .5s var(--ease) .07s,opacity .4s .07s}
+    .servico-card:hover .servico-diferenciais{max-height:80px;opacity:1}
+    .servico-diferenciais span{font-size:.72rem;color:var(--gold);letter-spacing:.05em}
+
+    /* ── BENTO GRID ── */
+    .servicos-bento{
+      grid-template-columns:repeat(4,1fr) !important;
+      grid-template-rows:380px 380px 300px !important;
+      gap:20px !important;
+      max-width:1440px !important;
     }
-    .servico-card:hover .servico-diferenciais {
-      max-height: 80px;
-      opacity: 1;
+    .servicos-bento .servico-card{aspect-ratio:unset !important}
+
+    /* Featured (video) card */
+    .servico-card-featured{
+      grid-column:1 / span 2;
+      grid-row:1 / span 2;
     }
-    .servico-diferenciais span {
-      font-size: .72rem;
-      color: var(--gold);
-      letter-spacing: .05em;
+    .servico-video{
+      position:absolute;inset:0;width:100%;height:100%;
+      object-fit:cover;
+      transition:transform 8s ease,filter .5s;
+      filter:brightness(.42) saturate(.8);
+    }
+    .servico-card-featured:hover .servico-video{
+      transform:scale(1.06);filter:brightness(.58) saturate(1.1);
+    }
+    .servico-badge{
+      position:absolute;top:28px;left:28px;
+      font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;
+      background:var(--gold);color:var(--black);
+      padding:8px 18px;border-radius:2px;z-index:5;
+      transition:box-shadow .4s,transform .4s;
+    }
+    .servico-card-featured:hover .servico-badge{
+      box-shadow:0 0 20px rgba(200,169,110,.5);
+      transform:translateY(-2px);
+    }
+
+    /* Wide cards (bottom row) */
+    .servico-card-wide{grid-column:span 2}
+
+    /* Responsive */
+    @media(max-width:1024px){
+      .servicos-bento{
+        grid-template-columns:1fr 1fr !important;
+        grid-template-rows:auto !important;
+      }
+      .servico-card-featured{grid-column:1 / span 2;grid-row:auto;min-height:420px}
+      .servico-card-wide{grid-column:1 / span 2}
+      .servicos-bento .servico-card{min-height:320px}
+    }
+    @media(max-width:600px){
+      .servicos-bento{grid-template-columns:1fr !important}
+      .servico-card-featured,.servico-card-wide{grid-column:1 !important;min-height:340px}
     }
   </style>
 
@@ -203,69 +241,19 @@
         <h2>Nossos <em>Serviços</em></h2>
         <p>Excelência em cada detalhe, do atendimento ao resultado final</p>
       </div>
-      <div class="servicos-grid">
-        <div class="servico-card fade-up">
-          <img src="assets/img/bronze-masc.webp" alt="Resultado de bronzeamento masculino no Studio de Beleza Brasil em Belém" class="servico-bg servico-bg-body">
+      <div class="servicos-grid servicos-bento">
+
+        <!-- SALÃO — Featured card com vídeo (col 1-2, rows 1-2) -->
+        <div class="servico-card servico-card-featured fade-up">
+          <video class="servico-video" autoplay muted loop playsinline>
+            <source src="assets/img/intro.mp4" type="video/mp4">
+          </video>
           <div class="servico-overlay"></div>
-          <div class="servico-content">
-            <span class="servico-num">01</span>
-            <h3>Bronzeamento Masculino</h3>
-            <p class="servico-desc">Pioneiros em bronzeamento masculino em Belém. Técnicas personalizadas para realçar a
-              musculatura com naturalidade e sofisticação.</p>
-            <ul class="servico-list-mini">
-              <li>Bronzeamento Natural</li>
-              <li>Bronzeamento Artificial</li>
-              <li>Esfoliação Corporal</li>
-              <li>Montagem na Fita</li>
-              <li>Banho de Lua</li>
-            </ul>
-            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Bronzeamento%20Masculino." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
-          </div>
-        </div>
-        <div class="servico-card fade-up">
-          <img src="assets/img/servico-1.webp" alt="Resultado de bronzeamento feminino no Studio de Beleza Brasil em Belém" class="servico-bg">
-          <div class="servico-overlay"></div>
-          <div class="servico-content">
-            <span class="servico-num">02</span>
-            <h3>Bronzeamento Feminino</h3>
-            <p class="servico-desc">Harmonização corporal que realça as curvas naturais. Bronzeado uniforme, duradouro e
-              que transmite confiança e elegância.</p>
-            <ul class="servico-list-mini">
-              <li>Bronzeamento Natural</li>
-              <li>Bronzeamento Artificial</li>
-              <li>Esfoliação com Massagem</li>
-              <li>Banho de Lua</li>
-            </ul>
-            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Bronzeamento%20Feminino." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
-          </div>
-        </div>
-        <div class="servico-card fade-up">
-          <img src="assets/img/servico-3.webp" alt="Procedimento de estética facial e harmonização no Studio de Beleza Brasil" class="servico-bg">
-          <div class="servico-overlay"></div>
-          <div class="servico-content">
-            <span class="servico-num">03</span>
-            <h3>Estética Facial</h3>
-            <p class="servico-desc">Procedimentos avançados de harmonização e rejuvenescimento com técnicas de ponta e
-              resultados naturais.</p>
-            <ul class="servico-list-mini">
-              <li>Harmonização Facial</li>
-              <li>Preenchimento Labial</li>
-              <li>Rinomodelação</li>
-              <li>Skinbooster</li>
-              <li>Microagulhamento</li>
-              <li>Botox Facial</li>
-            </ul>
-            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Est%C3%A9tica%20Facial." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
-          </div>
-        </div>
-        <div class="servico-card fade-up">
-          <img src="assets/img/servico-4.webp" alt="Serviços de salão de beleza — corte, escova e coloração no Studio de Beleza Brasil" class="servico-bg">
-          <div class="servico-overlay"></div>
+          <span class="servico-badge">Completo</span>
           <div class="servico-content">
             <span class="servico-num">04</span>
             <h3>Salão</h3>
-            <p class="servico-desc">Profissionais certificados, produtos premium e técnicas modernas para transformar
-              seu visual.</p>
+            <p class="servico-desc">Espaço completo com profissionais certificados, produtos premium e técnicas modernas para transformar seu visual.</p>
             <ul class="servico-list-mini">
               <li>Corte e Escova Progressiva</li>
               <li>Hidratação e Reconstrução</li>
@@ -277,14 +265,72 @@
             <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20servi%C3%A7o%20no%20Sal%C3%A3o." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
           </div>
         </div>
+
+        <!-- Bronzeamento Masculino (col 3, row 1) -->
+        <div class="servico-card fade-up">
+          <img src="assets/img/bronze-masc.webp" alt="Resultado de bronzeamento masculino no Studio de Beleza Brasil em Belém" class="servico-bg servico-bg-body">
+          <div class="servico-overlay"></div>
+          <div class="servico-content">
+            <span class="servico-num">01</span>
+            <h3>Bronzeamento Masculino</h3>
+            <p class="servico-desc">Pioneiros em bronzeamento masculino em Belém. Técnicas personalizadas para realçar a musculatura com naturalidade e sofisticação.</p>
+            <ul class="servico-list-mini">
+              <li>Bronzeamento Natural</li>
+              <li>Bronzeamento Artificial</li>
+              <li>Esfoliação Corporal</li>
+              <li>Montagem na Fita</li>
+              <li>Banho de Lua</li>
+            </ul>
+            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Bronzeamento%20Masculino." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
+          </div>
+        </div>
+
+        <!-- Bronzeamento Feminino (col 4, row 1) -->
+        <div class="servico-card fade-up">
+          <img src="assets/img/servico-1.webp" alt="Resultado de bronzeamento feminino no Studio de Beleza Brasil em Belém" class="servico-bg">
+          <div class="servico-overlay"></div>
+          <div class="servico-content">
+            <span class="servico-num">02</span>
+            <h3>Bronzeamento Feminino</h3>
+            <p class="servico-desc">Harmonização corporal que realça as curvas naturais. Bronzeado uniforme, duradouro e que transmite confiança e elegância.</p>
+            <ul class="servico-list-mini">
+              <li>Bronzeamento Natural</li>
+              <li>Bronzeamento Artificial</li>
+              <li>Esfoliação com Massagem</li>
+              <li>Banho de Lua</li>
+            </ul>
+            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Bronzeamento%20Feminino." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
+          </div>
+        </div>
+
+        <!-- Estética Facial (col 3, row 2) -->
+        <div class="servico-card fade-up">
+          <img src="assets/img/servico-3.webp" alt="Procedimento de estética facial e harmonização no Studio de Beleza Brasil" class="servico-bg">
+          <div class="servico-overlay"></div>
+          <div class="servico-content">
+            <span class="servico-num">03</span>
+            <h3>Estética Facial</h3>
+            <p class="servico-desc">Procedimentos avançados de harmonização e rejuvenescimento com técnicas de ponta e resultados naturais.</p>
+            <ul class="servico-list-mini">
+              <li>Harmonização Facial</li>
+              <li>Preenchimento Labial</li>
+              <li>Rinomodelação</li>
+              <li>Skinbooster</li>
+              <li>Microagulhamento</li>
+              <li>Botox Facial</li>
+            </ul>
+            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Est%C3%A9tica%20Facial." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
+          </div>
+        </div>
+
+        <!-- Body Piercing (col 4, row 2) -->
         <div class="servico-card fade-up">
           <img src="assets/img/servico-5.webp" alt="Aplicação profissional de body piercing com material esterilizado no Studio de Beleza Brasil" class="servico-bg">
           <div class="servico-overlay"></div>
           <div class="servico-content">
             <span class="servico-num">05</span>
             <h3>Body Piercing</h3>
-            <p class="servico-desc">Aplicações profissionais e seguras realizadas com equipamentos esterilizados e
-              materiais de alta qualidade.</p>
+            <p class="servico-desc">Aplicações profissionais e seguras realizadas com equipamentos esterilizados e materiais de alta qualidade.</p>
             <ul class="servico-list-mini">
               <li>Orelha e Nariz</li>
               <li>Umbigo e Sobrancelha</li>
@@ -294,14 +340,15 @@
             <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Body%20Piercing." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
           </div>
         </div>
-        <div class="servico-card fade-up">
-          <img src="assets/img/servico-2.webp" alt="Serviços de beleza e bem-estar — manicure, micropigmentação e massagem no Studio de Beleza Brasil" class="servico-bg">
+
+        <!-- Beleza e Bem-estar — WIDE (col 1-2, row 3) -->
+        <div class="servico-card servico-card-wide fade-up">
+          <img src="assets/img/servico-2.webp" alt="Serviços de beleza e bem-estar — micropigmentação e massagem no Studio de Beleza Brasil" class="servico-bg">
           <div class="servico-overlay"></div>
           <div class="servico-content">
             <span class="servico-num">06</span>
             <h3>Beleza e Bem-estar</h3>
-            <p class="servico-desc">Serviços completos para seu cuidado pessoal e bem-estar, do design de sobrancelhas à
-              maquiagem de noivas.</p>
+            <p class="servico-desc">Serviços completos para seu cuidado pessoal e bem-estar, do design de sobrancelhas à maquiagem de noivas.</p>
             <ul class="servico-list-mini">
               <li>Micropigmentação</li>
               <li>Design de Sobrancelhas</li>
@@ -312,7 +359,9 @@
             <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20servi%C3%A7o%20de%20Beleza%20e%20Bem-estar." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
           </div>
         </div>
-        <div class="servico-card fade-up">
+
+        <!-- Serviços de Unhas — WIDE (col 3-4, row 3) -->
+        <div class="servico-card servico-card-wide fade-up">
           <img src="assets/img/manicure.webp" alt="Serviços de manicure e pedicure profissional no Studio de Beleza Brasil em Belém" class="servico-bg">
           <div class="servico-overlay"></div>
           <div class="servico-content">
@@ -333,6 +382,7 @@
             <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Servi%C3%A7os%20de%20Unhas." target="_blank" rel="noopener" class="servico-cta">Agendar →</a>
           </div>
         </div>
+
       </div>
     </section>
 
