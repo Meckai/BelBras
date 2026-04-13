@@ -92,32 +92,52 @@
 
     .landing-eyebrow {
       font-family: 'Jost', sans-serif;
-      font-size: 0.72rem;
+      font-size: 0.65rem; /* Ajustado para caber na moldura */
       font-weight: 500;
-      color: #c8a96e;
+      color: #dfc08a;
       text-transform: uppercase;
-      letter-spacing: 0.35em;
+      letter-spacing: 0.3em;
       margin-bottom: 24px;
       display: inline-block;
+      padding: 6px 18px;
+      border: 1px solid rgba(200, 169, 110, 0.4);
+      border-radius: 50px; /* Formato elegante de pílula arredondada */
+      background: rgba(10, 10, 10, 0.4);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 0 10px rgba(200,169,110,0.1);
+      transition: all 0.4s ease;
+      cursor: default; /* Sem ponteiro de link, é apenas visual */
+    }
+
+    .landing-eyebrow:hover {
+      background: rgba(200,169,110,0.12); /* Acende levemente o fundo */
+      border-color: #dfc08a; /* Borda fica totalmente dourada */
+      transform: translateY(-2px); /* Dá a sensação de relevo tátil */
+      box-shadow: 0 0 20px rgba(200,169,110,0.3);
+      color: #ffffff; /* Texto brilha pro branco no toque! */
+      text-shadow: 0 0 10px rgba(200,169,110,0.8);
     }
 
     .landing-title {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2.2rem, 4vw, 3.5rem);
-      font-weight: 400;
+      font-weight: 600;
       line-height: 1.15;
       margin-bottom: 28px;
-      color: #fff;
+      color: #dfc08a; /* Dourado brilhante igual ao tattoo */
+      text-shadow: 0 0 15px rgba(200,169,110,0.5), 0 4px 25px rgba(0,0,0,0.9);
     }
 
     .landing-subtitle {
       font-family: 'Jost', sans-serif;
       font-size: clamp(1rem, 1.5vw, 1.2rem);
-      font-weight: 300;
+      font-weight: 400;
       line-height: 1.7;
-      color: rgba(255,255,255,0.8);
+      color: #ffffff; /* Fica em branco a pedido do usuário */
       margin-bottom: 22px;
       letter-spacing: 0.03em;
+      text-shadow: 0 4px 25px rgba(0,0,0,1); /* Sombra limpa para dar foco total ao branco */
     }
 
     .landing-text {
@@ -142,19 +162,25 @@
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(200, 169, 110, 0.8);
-      border: 1px solid rgba(200, 169, 110, 0.3);
-      padding: 7px 14px;
-      border-radius: 2px;
-      background: rgba(200, 169, 110, 0.06);
-      transition: all 0.3s ease;
+      color: #dfc08a; /* Dourado brilhante */
+      border: 1px solid rgba(200, 169, 110, 0.4);
+      padding: 8px 16px;
+      border-radius: 50px; /* Estética Pílula Redonda */
+      background: rgba(10, 10, 10, 0.4); /* Fundo de vidro */
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.4s ease;
+      box-shadow: 0 0 10px rgba(200,169,110,0.1);
+      cursor: default; /* Visual tag */
     }
 
     .landing-badge:hover {
-      background: rgba(200, 169, 110, 0.15);
-      border-color: rgba(200, 169, 110, 0.6);
-      color: #c8a96e;
+      background: rgba(200,169,110,0.12); /* Fundo levanta glow */
+      border-color: #dfc08a;
+      color: #ffffff;
       transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(200,169,110,0.3);
+      text-shadow: 0 0 10px rgba(200,169,110,0.8);
     }
 
     .landing-btns {
@@ -241,15 +267,13 @@
     .expert-title span {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(2rem, 3.5vw, 3.5rem);
-      font-weight: 500;
+      font-weight: 600; /* Mais chamativo */
       font-style: italic;
-      background: linear-gradient(135deg, rgba(200, 169, 110, 0.9) 0%, rgba(200, 169, 110, 0.2) 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #e4cca2; /* Cor sólida bem clara para leitura altíssima */
       line-height: 0.95;
       white-space: nowrap;
-      filter: drop-shadow(0 5px 10px rgba(0,0,0,0.8));
+      text-shadow: 0 4px 20px rgba(0,0,0,1);
+      filter: drop-shadow(0px 5px 15px rgba(0,0,0,1));
     }
 
     .expert-subtitle {
@@ -283,25 +307,62 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: #c8a96e;
-      color: #0a0a0a;
+      background: linear-gradient(135deg, #d4b882 0%, #b8924b 100%);
+      color: #050505;
       padding: 16px 36px;
-      border: none;
-      border-radius: 2px;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 4px;
       font-family: 'Jost', sans-serif;
       font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
       text-decoration: none;
+      box-shadow: 0 0 25px rgba(200, 169, 110, 0.3);
     }
 
     .landing-cta:hover {
-      background: #dfc08a;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(200, 169, 110, 0.3);
+      background: linear-gradient(135deg, #e4cca2 0%, #c9a562 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 0 40px rgba(200, 169, 110, 0.5);
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    @keyframes pulseGlowButton {
+      0% {
+        box-shadow: 0 0 10px rgba(200,169,110,0.2);
+        border-color: rgba(200, 169, 110, 0.5);
+      }
+      50% {
+        box-shadow: 0 0 25px rgba(200,169,110,0.7), inset 0 0 10px rgba(200,169,110,0.2);
+        border-color: rgba(228, 204, 162, 1);
+        color: #ffffff; /* Letra pisca sutilmente pro branco! */
+        text-shadow: 0 0 12px rgba(228, 204, 162, 0.8);
+      }
+      100% {
+        box-shadow: 0 0 10px rgba(200,169,110,0.2);
+        border-color: rgba(200, 169, 110, 0.5);
+      }
+    }
+
+    .landing-cta-secondary {
+      background: transparent;
+      border: 1px solid #c8a96e;
+      color: #dfc08a; /* Dourado brilhante */
+      box-shadow: 0 0 15px rgba(200,169,110,0.2);
+      text-shadow: 0 0 8px rgba(200,169,110,0.6);
+      animation: pulseGlowButton 3s infinite alternate ease-in-out;
+    }
+
+    .landing-cta-secondary:hover {
+      background: rgba(200,169,110,0.05);
+      border-color: #e4cca2;
+      color: #ffffff;
+      box-shadow: 0 0 35px rgba(200,169,110,0.6), inset 0 0 15px rgba(200,169,110,0.2);
+      text-shadow: 0 0 15px rgba(255,255,255,0.8);
+      animation-play-state: paused;
     }
 
     .landing-cta svg {
@@ -320,7 +381,7 @@
       .landing-hero-inner {
         flex-direction: column;
         justify-content: flex-start; /* Joga os elementos para cima */
-        padding: 40px 24px;
+        padding: 40px 24px 15px; /* Reduzindo de 40px para 15px na base */
         align-items: center;
       }
       .landing-content {
@@ -469,8 +530,8 @@
         <span class="landing-badge">Salão Padrão Internacional de Qualidade</span>
       </div>
       <div class="landing-block landing-btns" data-delay="2000">
-        <a href="servicos.html" class="landing-cta">Conhecer Nossos Serviços</a>
-        <a href="tattoo.html" class="landing-cta" style="background:transparent; border: 1px solid #c8a96e; color: #c8a96e;">Renan Melo Tattoo</a>
+        <a href="servicos.html" class="landing-cta landing-cta-secondary">Conhecer Nossos Serviços</a>
+        <a href="tattoo.html" class="landing-cta landing-cta-secondary">Renan Melo Tattoo</a>
       </div>
     `;
 
