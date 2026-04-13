@@ -84,7 +84,8 @@
     .tt-hero-video.loaded { opacity: 0.3; }
     .tt-hero-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(8,8,8,0.6) 0%, rgba(8,8,8,0.4) 50%, rgba(8,8,8,0.85) 100%);
+      background: radial-gradient(circle at center, rgba(5,5,5,0.15) 0%, rgba(5,5,5,0.8) 100%),
+                  linear-gradient(to bottom, transparent 70%, rgba(5,5,5,0.95) 100%);
     }
     .tt-hero-placeholder {
       position: absolute; inset: 0;
@@ -117,13 +118,20 @@
       animation: fadeUp 1s ease 0.9s forwards;
     }
     .tt-hero-cta {
-      display: inline-block; padding: 16px 44px; border: 1px solid var(--gold);
+      display: inline-block; padding: 18px 48px; border: 1px solid var(--gold);
       color: var(--offwhite); font-family: var(--mono); font-size: 0.65rem;
-      letter-spacing: 0.25em; text-transform: uppercase; text-decoration: none;
-      transition: all 0.4s ease; opacity: 0;
+      letter-spacing: 0.3em; text-transform: uppercase; text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0;
       animation: fadeUp 1s ease 1.2s forwards;
+      position: relative; overflow: hidden;
     }
-    .tt-hero-cta:hover { background: var(--gold); color: var(--black); }
+    .tt-hero-cta::before {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: 0.5s;
+    }
+    .tt-hero-cta:hover::before { left: 100%; }
+    .tt-hero-cta:hover { background: var(--gold); color: var(--black); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(200,168,130,0.2); }
     .tt-seals {
       display: flex; justify-content: center; gap: 32px;
       margin-top: 48px; flex-wrap: wrap; opacity: 0;
@@ -179,9 +187,14 @@
     .tt-card {
       aspect-ratio: 1; position: relative; overflow: hidden;
       background: var(--charcoal); cursor: pointer;
-      transition: transform 0.4s ease;
+      transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+      border: 1px solid rgba(255,255,255,0.03);
     }
-    .tt-card:hover { transform: scale(1.02); }
+    .tt-card:hover { 
+      transform: translateY(-10px) scale(1.02); 
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(200,168,130,0.1);
+      border-color: rgba(200,168,130,0.3);
+    }
     .tt-card img {
       width: 100%; height: 100%; object-fit: cover;
       transition: transform 0.6s ease;
@@ -211,9 +224,9 @@
     /* ── MARQUEE LOOP ── */
     .tt-marquee {
       width: 100%; overflow: hidden; position: relative;
-      background: var(--black); padding: 60px 0;
-      mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-      -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+      background: var(--black); padding: 80px 0;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     }
     .tt-marquee-track {
       display: flex; width: max-content;
@@ -297,10 +310,16 @@
 
     /* ── FORM ── */
     .tt-form {
-      max-width: 800px; margin: 0 auto;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      padding: 60px; backdrop-filter: blur(10px);
+      max-width: 850px; margin: 0 auto;
+      background: rgba(255,255,255,0.015);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 60px; backdrop-filter: blur(20px);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.3), inset 0 0 20px rgba(255,255,255,0.02);
+      position: relative;
+    }
+    .tt-form::after {
+      content: ''; position: absolute; inset: 0; border: 1px solid rgba(200,168,130,0.1);
+      pointer-events: none; margin: -5px;
     }
     .tt-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
     .tt-form-group { display: flex; flex-direction: column; gap: 10px; margin-bottom: 30px; }
@@ -427,9 +446,11 @@
       .tt-form-row { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
-      .tt-section { padding: 60px 20px; }
-      .tt-title { font-size: 2.5rem; }
+      .tt-section { padding: 60px 24px; }
+      .tt-title { font-size: 2.5rem; letter-spacing: 0.02em; }
       .tt-cta-section { padding: 100px 24px; }
+      .back-bar { padding: 0 16px; }
+      .tt-form { padding: 40px 20px; }
     }
   </style>
 </head>
