@@ -14,15 +14,21 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' font-family='serif'>✨</text></svg>">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
       background: #0a0a0a;
+      overflow: hidden; /* impede qualquer rolagem na primeira tela */
     }
 
     .landing-hero {
       position: relative;
       height: 100vh;
+      height: 100dvh;
       overflow: hidden;
       background: #0a0a0a;
       display: flex;
@@ -58,6 +64,7 @@
       width: 100%;
       margin: 0 auto;
       height: 100vh;
+      height: 100dvh;
       position: relative;
       z-index: 2;
       padding: 0 60px;
@@ -337,11 +344,12 @@
       .landing-expert {
         width: 150%;
         height: 85vh;
-        left: -25%;
+        height: 85dvh;
+        left: 50%;
         right: auto;
         top: auto;
         bottom: 0;
-        transform: translateY(40px);
+        transform: translate(-50%, 40px);
         opacity: 0;
         z-index: 1;
         display: flex;
@@ -351,7 +359,7 @@
       }
       .landing-expert.visible {
         opacity: 0.65;
-        transform: translateY(0);
+        transform: translate(-50%, 0);
       }
       .landing-expert img {
         width: 100%;
