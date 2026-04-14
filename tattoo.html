@@ -98,11 +98,14 @@
       padding: 40px; max-width: 900px;
     }
     .tt-eyebrow {
-      font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.45em;
+      display: inline-block; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.45em;
       text-transform: uppercase; color: var(--gold);
       margin-bottom: 28px; opacity: 0;
       animation: fadeUp 1s ease 0.3s forwards;
+      border: 1px solid rgba(200,168,130,0.3); padding: 12px 24px; border-radius: 30px;
+      transition: all 0.4s ease; background: rgba(0,0,0,0.4); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
     }
+    .tt-eyebrow:hover { background: rgba(200,168,130,0.1); border-color: var(--gold); transform: translateY(-2px); box-shadow: 0 4px 15px rgba(200,168,130,0.15); }
     .tt-title {
       font-family: var(--serif); font-size: clamp(3rem, 7vw, 6rem);
       font-weight: 300; line-height: 1.0; color: var(--offwhite);
@@ -110,40 +113,80 @@
       letter-spacing: 0.05em;
       animation: fadeUp 1s ease 0.6s forwards;
     }
-    .tt-title em { font-style: italic; color: var(--gold); }
+    .tt-title em {
+      font-style: italic; color: var(--gold);
+      display: inline-block; position: relative;
+      background: linear-gradient(to right, var(--gold) 0%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text; color: transparent;
+      clip-path: inset(0 100% 0 0);
+      animation: tattooDraw 3s cubic-bezier(0.4, 0, 0.2, 1) 1.5s forwards;
+    }
+    @keyframes tattooDraw {
+      0% { clip-path: inset(0 100% 0 0); filter: drop-shadow(0 0 0 var(--gold)); }
+      50% { filter: drop-shadow(0 0 8px rgba(200,168,130,0.4)); }
+      100% { clip-path: inset(0 0 0 0); filter: drop-shadow(0 0 15px rgba(200,168,130,0.2)); }
+    }
     .tt-styles {
-      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.25em;
-      text-transform: uppercase; color: var(--text-muted);
-      margin-bottom: 48px; opacity: 0;
+      display: flex; gap: 14px; justify-content: center; align-items: center; flex-wrap: wrap; margin-bottom: 48px; opacity: 0;
       animation: fadeUp 1s ease 0.9s forwards;
+      font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--offwhite);
+    }
+    .tt-styles-sep {
+      color: var(--gold); font-size: 0.6rem; opacity: 0.6;
     }
     .tt-hero-cta {
-      display: inline-block; padding: 18px 48px; border: 1px solid var(--gold);
-      color: var(--offwhite); font-family: var(--mono); font-size: 0.65rem;
+      display: inline-block; padding: 18px 48px; border: 1px solid rgba(255,140,50,0.5);
+      color: var(--black); background: var(--gold); font-family: var(--mono); font-size: 0.65rem; font-weight: 700;
       letter-spacing: 0.3em; text-transform: uppercase; text-decoration: none;
       transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); opacity: 0;
-      animation: fadeUp 1s ease 1.2s forwards;
-      position: relative; overflow: hidden;
+      animation: fadeUp 1s ease 1.2s forwards, btnFire 2.5s infinite alternate;
+      position: relative; overflow: hidden; border-radius: 2px;
+    }
+    @keyframes btnFire {
+      0% { box-shadow: 0 0 10px rgba(200,168,130,0.4), inset 0 0 5px rgba(255,100,0,0.2); background: var(--gold); }
+      100% { box-shadow: 0 0 35px rgba(255,100,0,0.6), inset 0 0 15px rgba(255,150,0,0.5); background: #f2c07c; border-color: rgba(255,140,50,0.8); }
     }
     .tt-hero-cta::before {
       content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent);
       transition: 0.5s;
     }
     .tt-hero-cta:hover::before { left: 100%; }
-    .tt-hero-cta:hover { background: var(--gold); color: var(--black); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(200,168,130,0.2); }
+    .tt-hero-cta:hover { transform: translateY(-3px) scale(1.02); filter: brightness(1.1); }
     .tt-seals {
-      display: flex; justify-content: center; gap: 32px;
-      margin-top: 48px; flex-wrap: wrap; opacity: 0;
+      display: flex; justify-content: center; gap: 16px; margin-top: 48px; flex-wrap: wrap; opacity: 0;
       animation: fadeUp 1s ease 1.5s forwards;
     }
     .tt-seal {
-      font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--text-muted);
-      display: flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted);
+      border: 1px solid rgba(255,255,255,0.1); padding: 8px 16px; border-radius: 20px; background: rgba(10,10,10,0.5); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); transition: all 0.3s ease;
     }
-    .tt-seal::before {
-      content: '—'; color: var(--gold); font-size: 0.8rem;
+    .tt-seal:hover { color: var(--offwhite); background: rgba(200,168,130,0.1); border-color: rgba(200,168,130,0.3); box-shadow: 0 5px 15px rgba(0,0,0,0.3); transform: translateY(-2px); }
+
+    /* ── DIFERENCIAL ── */
+    .tt-diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 960px; margin: 60px auto 0; }
+    .tt-diff-card {
+      background: rgba(10,10,10,0.15); backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+      padding: 50px 40px; border: 1px solid rgba(255,255,255,0.06); text-align: left;
+      transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+      position: relative; overflow: hidden;
+    }
+    .tt-diff-card:hover { transform: translateY(-5px); border-color: rgba(200,168,130,0.3); box-shadow: 0 15px 40px rgba(0,0,0,0.3); }
+    .tt-diff-card h3 { font-family: var(--serif); font-size: 1.6rem; font-weight: 300; color: var(--offwhite); margin-bottom: 16px; }
+    .tt-diff-card.premium {
+      background: rgba(15,15,15,0.25);
+      border-color: rgba(200,168,130,0.35); box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    }
+    .tt-diff-card.premium:hover { box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 20px rgba(200,168,130,0.1); }
+    .tt-diff-card.premium h3 { color: var(--gold); }
+    .tt-diff-card p { font-size: 0.9rem; font-weight: 300; color: var(--text-muted); line-height: 1.8; }
+    .tt-diff-badge {
+      position: absolute; top: 0; right: 0; background: var(--gold);
+      color: var(--black); font-family: var(--mono); font-size: 0.55rem;
+      letter-spacing: 0.25em; text-transform: uppercase; padding: 6px 14px;
+      font-weight: 600; z-index: 3;
     }
 
     /* ── PORTFOLIO ── */
@@ -444,6 +487,7 @@
       .tt-steps { flex-direction: column; gap: 40px; }
       .tt-steps::before { display: none; }
       .tt-form-row { grid-template-columns: 1fr; }
+      .tt-diff-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .tt-section { padding: 60px 24px; }
@@ -490,7 +534,17 @@
   <div class="tt-hero-content">
     <p class="tt-eyebrow">Belém, Pará — Tatuagem feita com técnica e intenção</p>
     <h1 class="tt-title">Renan Melo<br><em>Tattoo</em></h1>
-    <p class="tt-styles">Fine Line · Aquarelado · Pontilhismo · Glitter · Blackwork</p>
+    <div class="tt-styles">
+      <span>Fine Line</span>
+      <span class="tt-styles-sep">✦</span>
+      <span>Aquarelado</span>
+      <span class="tt-styles-sep">✦</span>
+      <span>Pontilhismo</span>
+      <span class="tt-styles-sep">✦</span>
+      <span>Glitter</span>
+      <span class="tt-styles-sep">✦</span>
+      <span>Blackwork</span>
+    </div>
     <a href="#agendar" class="tt-hero-cta">Agendar minha tatuagem</a>
     <div class="tt-seals">
       <span class="tt-seal">Atendimento com hora marcada</span>
@@ -500,17 +554,51 @@
   </div>
 </section>
 
+<!-- BLOCO DE DIFERENCIAÇÃO -->
+<section class="tt-section tt-section-dark" id="experiencia" style="position: relative; border-bottom: 1px solid rgba(255,255,255,0.02); overflow: hidden;">
+  <img src="assets/tattoo/back.png" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.25; z-index: 0; pointer-events: none; filter: brightness(0.6) grayscale(0.5);">
+  <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, var(--dark) 0%, transparent 15%, transparent 85%, var(--dark) 100%); z-index: 1; pointer-events: none;"></div>
+  
+  <div style="position: relative; z-index: 2;">
+    <div class="tt-section-header">
+      <span class="tt-label tt-fade-up">A Experiência</span>
+      <h2 class="tt-heading tt-fade-up" style="margin-bottom: 24px;">Duas formas de <em>viver a arte</em></h2>
+      <p class="tt-microcopy tt-fade-up" style="max-width: 650px; font-size: 1.05rem;">
+        Sem pressa. Sem distração. Só arte bem feita.<br>Você escolhe o nível de conforto.
+      </p>
+    </div>
+
+    <div class="tt-diff-grid tt-fade-up">
+      <div class="tt-diff-card">
+        <h3>No Estúdio</h3>
+        <p>Ambiente devidamente preparado para a prática. Imersão total na sua tatuagem com estrutura profissional, foco absoluto e segurança.</p>
+      </div>
+
+      <div class="tt-diff-card premium">
+        <div class="tt-diff-badge">Exclusivo</div>
+        <h3>Atendimento Domiciliar</h3>
+        <p>Atendimento totalmente privado. Levamos toda a estrutura técnica e assepsia profissional para o seu espaço, garantindo total conforto e discrição para a sua sessão.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ② PORTFÓLIO -->
-<section class="tt-section" id="portfolio">
-  <div class="tt-section-header">
-    <span class="tt-label tt-fade-up">Portfólio</span>
-    <h2 class="tt-heading tt-fade-up">O trabalho fala <em>por si</em></h2>
+<section class="tt-section" id="portfolio" style="position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.02);">
+  <img src="assets/tattoo/back2.png" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.18; z-index: 0; pointer-events: none; filter: brightness(0.5) grayscale(0.5);">
+  <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, var(--black) 0%, transparent 15%, transparent 85%, var(--black) 100%); z-index: 1; pointer-events: none;"></div>
+  
+  <div style="position: relative; z-index: 2;">
+    <div class="tt-section-header">
+      <span class="tt-label tt-fade-up">Portfólio</span>
+      <h2 class="tt-heading tt-fade-up">O trabalho fala <em>por si</em></h2>
     <p class="tt-microcopy tt-fade-up">Cada pessoa chega com uma ideia. O que você vê aqui é o que acontece quando a gente leva isso a sério.</p>
   </div>
 
   <div class="tt-marquee tt-fade-up">
     <div class="tt-marquee-track">
       <!-- Original items -->
+      <div class="tt-marquee-item"><img src="assets/tattoo/domicilio.webp" alt="Tattoo Portfolio Domicílio" onclick="openLightbox(this)"></div>
       <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (1).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
       <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (2).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
       <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (3).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
@@ -524,6 +612,7 @@
       <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (11).png" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
       <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (12).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
       <!-- Duplicate items for loop -->
+      <div class="tt-marquee-item"><img src="assets/tattoo/domicilio.webp" alt="Tattoo Portfolio Domicílio" onclick="openLightbox(this)"></div>
       <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (1).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
       <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (2).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
       <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (3).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
@@ -538,13 +627,18 @@
       <div class="tt-marquee-item"><img src="assets/tattoo/tattoo (12).jpg" alt="Tattoo Portfolio" onclick="openLightbox(this)"></div>
     </div>
   </div>
+  </div>
 </section>
 
 
 
 <!-- ④ COMO FUNCIONA + FORMULÁRIO -->
-<section class="tt-section" id="como-funciona">
-  <div class="tt-section-header">
+<section class="tt-section" id="como-funciona" style="position: relative; overflow: hidden; border-top: 1px solid rgba(255,255,255,0.02);">
+  <img src="assets/tattoo/back1.png" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center top; opacity: 0.35; z-index: 0; pointer-events: none; filter: brightness(0.6) grayscale(0.5); transform: scale(1.1); transform-origin: top center;">
+  <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, var(--black) 0%, transparent 15%, transparent 60%, var(--black) 100%); z-index: 1; pointer-events: none;"></div>
+  
+  <div style="position: relative; z-index: 2;">
+    <div class="tt-section-header">
     <span class="tt-label tt-fade-up">Processo</span>
     <h2 class="tt-heading tt-fade-up">Como <em>funciona</em></h2>
   </div>
@@ -628,7 +722,9 @@
       <span class="tt-guarantee">Atendimento direto pelo WhatsApp</span>
       <span class="tt-guarantee">Orçamento sem compromisso</span>
     </div>
+    </div>
   </form>
+  </div>
 </section>
 
 <!-- ⑤ CTA FINAL -->

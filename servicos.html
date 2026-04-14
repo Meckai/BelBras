@@ -25,7 +25,7 @@
     /* ── BENTO GRID ── */
     .servicos-bento{
       grid-template-columns:repeat(4,1fr) !important;
-      grid-template-rows:minmax(460px, auto) minmax(460px, auto) minmax(360px, auto) !important;
+      grid-template-rows:minmax(460px, auto) minmax(460px, auto) minmax(360px, auto) minmax(480px, auto) !important;
       gap:20px !important;
       max-width:1440px !important;
     }
@@ -72,6 +72,37 @@
     .servico-card-wide:hover .servico-list-mini{max-height:220px !important}
     .servico-card-wide:hover .servico-diferenciais{max-height:70px !important}
 
+    /* Card Mega (Make & Hair) */
+    .servico-card-mega{grid-column:1 / -1; min-height: 520px;}
+    .servico-card-mega:hover .servico-desc{max-height:85px !important}
+    .servico-card-mega:hover .servico-list-mini{max-height:150px !important}
+    
+    .servico-collage-3{
+      position:absolute;inset:0;display:grid;
+      grid-template-columns: 1fr 1fr 1fr;gap:0;
+    }
+    .s-col-img{
+      width:100%;height:100%;object-fit:cover;
+      transition:transform 1s var(--ease),filter .6s;
+      filter:opacity(0.85) brightness(.4) saturate(.9);
+    }
+    .servico-card-mega:hover .s-col-img{filter:opacity(1) brightness(.65) saturate(1.1);}
+    .servico-card-mega:hover .s-col-img:hover{
+      filter:opacity(1) brightness(1) saturate(1.2);
+      transform:scale(1.05);z-index:2;position:relative;
+      box-shadow:0 0 40px rgba(0,0,0,.8);
+    }
+    .servico-content-center {
+      text-align:center;
+    }
+    .servico-content-center .servico-num { justify-content:center; }
+    .servico-content-center .servico-num::before { display:none; }
+    .mega-list {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:8px 30px;
+    }
+    .mega-list li { border:none !important; padding:0 !important; font-size:.82rem !important; }
+    .mega-list li::before { content:'✦'; color:var(--gold); margin-right:8px; font-size:0.7rem; vertical-align:middle; }
+
     /* Responsive */
     @media(max-width:1024px){
       .servicos-bento{
@@ -80,6 +111,7 @@
       }
       .servico-card-featured{grid-column:1 / span 2;grid-row:auto;min-height:540px}
       .servico-card-wide{grid-column:1 / span 2;min-height:500px}
+      .servico-card-mega{grid-column:1 / span 2;min-height:500px}
       .servicos-bento .servico-card{min-height:500px}
       .servicos-bento .servico-card:hover .servico-desc{max-height:100px !important}
       .servicos-bento .servico-card:hover .servico-list-mini{max-height:350px !important}
@@ -87,9 +119,11 @@
     }
     @media(max-width:600px){
       .servicos-bento{grid-template-columns:1fr !important}
-      .servico-card-featured,.servico-card-wide{grid-column:1 !important;min-height:520px}
+      .servico-card-featured,.servico-card-wide,.servico-card-mega{grid-column:1 !important;min-height:520px}
       .servicos-bento .servico-card{min-height:500px}
       .servicos-bento .servico-card:hover .servico-list-mini{max-height:350px !important}
+      .servico-collage-3 { grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; }
+      .s-col-img:nth-child(1) { grid-column: 1 / span 2; }
     }
   </style>
 
@@ -399,6 +433,28 @@
           </div>
         </div>
 
+        <!-- Make & Hair — MEGA (col 1-4, row 4) -->
+        <div class="servico-card servico-card-mega fade-up">
+          <div class="servico-collage-3">
+            <img src="assets/img/make (5).webp" alt="Maquiagem Pele Blindada" class="s-col-img">
+            <img src="assets/img/make (2).webp" alt="Maquiagem Artística" class="s-col-img">
+            <img src="assets/img/make (1).webp" alt="Penteados e Tranças" class="s-col-img">
+          </div>
+          <div class="servico-overlay" style="background:linear-gradient(to top,rgba(10,10,10,1) 0%,rgba(10,10,10,.6) 40%,rgba(10,10,10,0) 100%);"></div>
+          <div class="servico-content servico-content-center">
+            <span class="servico-num">08</span>
+            <h3>Make & Hair</h3>
+            <p class="servico-desc" style="max-width:700px; margin:0 auto;">Assinatura de beleza completa para eventos e ocasiões especiais. Técnicas avançadas de maquiagem de alta durabilidade, traços artísticos e penteados estruturados com perfeição.</p>
+            <ul class="servico-list-mini mega-list">
+              <li>Maquiagem Artística</li>
+              <li>Maquiagem pele blindada</li>
+              <li>Penteados</li>
+              <li>Tranças</li>
+            </ul>
+            <a href="https://wa.me/5591981172525?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20Servi%C3%A7os%20de%20Make%20e%20Hair." target="_blank" rel="noopener" class="servico-cta">Agendar Transformação →</a>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -480,6 +536,10 @@
           <div class="gcard"><img src="assets/img/galeria-09.webp" alt="Resultado de preenchimento labial — estética facial em Belém"></div>
           <div class="gcard"><img src="assets/img/galeria-10.webp" alt="Resultado de Skinbooster — hidratação profunda da pele"></div>
           <div class="gcard"><img src="assets/img/galeria-11.webp" alt="Procedimento de remoção de sinais — Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/make (5).webp" alt="Maquiagem Pele Blindada — Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/make (2).webp" alt="Maquiagem Artística e Penteados — Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/make (1).webp" alt="Tranças e Hair Design — Studio de Beleza Brasil"></div>
+          <div class="gcard"><img src="assets/img/make (3).webp" alt="Make & Hair Profissional — Studio de Beleza Brasil"></div>
           <div class="gcard"><img src="assets/img/galeria-12.webp" alt="Espaço interno do Studio de Beleza Brasil em Belém"></div>
           <div class="gcard"><img src="assets/img/galeria-13.webp" alt="Ambiente premium do Studio de Beleza Brasil"></div>
           <div class="gcard"><img src="assets/img/galeria-14.webp" alt="Recepção e estrutura do Studio de Beleza Brasil"></div>
